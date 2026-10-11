@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #FAF7F2;
+    color: #23372E;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-serif-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Custom Soft & Pine Green Palette */
+.bg-pine-deep {
+  background-color: #1E3F33;
+}
+
+.bg-pine-card {
+  background-color: #234E3E;
+}
+
+.bg-soft-matcha {
+  background-color: #A3D99B;
+}
+
+.bg-soft-matcha-light {
+  background-color: #EBF7E9;
+}
+
+.bg-cream-canvas {
+  background-color: #FAF7F2;
+}
+
+.bg-cream-card {
+  background-color: #FFFFFF;
+}
+
+.bg-cream-muted {
+  background-color: #F4EFEA;
+}
+
+.text-pine-deep {
+  color: #1E3F33;
+}
+
+.text-pine-accent {
+  color: #2D6A53;
+}
+
+/* Curved Soft Button Styles */
+.btn-curved {
+  border-radius: 9999px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-curved:not(.hidden) {
+  display: inline-flex;
+}
+
+.btn-curved:active {
+  transform: scale(0.96);
+}
+
+.btn-pine-primary {
+  background-color: #234E3E;
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px -4px rgba(35, 78, 62, 0.35);
+}
+
+.btn-pine-primary:hover {
+  background-color: #1A3B2F;
+  box-shadow: 0 12px 24px -4px rgba(35, 78, 62, 0.45);
+  transform: translateY(-1.5px);
+}
+
+.btn-matcha-primary {
+  background-color: #A3D99B;
+  color: #1A3D2B;
+  box-shadow: 0 8px 20px -4px rgba(163, 217, 155, 0.4);
+}
+
+.btn-matcha-primary:hover {
+  background-color: #92CD8A;
+  transform: translateY(-1.5px);
+}
+
+.btn-soft-secondary {
+  background-color: #F4EFEA;
+  color: #2D4036;
+  border: 1px solid #E2D9CE;
+}
+
+.btn-soft-secondary:hover {
+  background-color: #EAE3DA;
+  color: #172B20;
+  transform: translateY(-1.5px);
+}
+
+.btn-soft-white {
+  background-color: #FFFFFF;
+  color: #234E3E;
+  border: 1px solid #E5EBE3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.btn-soft-white:hover {
+  background-color: #F8FAF7;
+  transform: translateY(-1.5px);
+}
+
+/* Soft Cards & Pill Badges */
+.card-soft {
+  border-radius: 2rem;
+  background-color: #FFFFFF;
+  border: 1px solid #EADBCC;
+  box-shadow: 0 10px 30px -5px rgba(35, 78, 62, 0.04), 0 4px 10px -2px rgba(35, 78, 62, 0.02);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-soft:hover {
+  box-shadow: 0 16px 36px -6px rgba(35, 78, 62, 0.08), 0 6px 16px -3px rgba(35, 78, 62, 0.04);
+  transform: translateY(-2px);
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C8DEC3;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7A9C78;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 1rem 0;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #C8DEC3;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #7A9C78;
+}
+
+/* Botanical Watermark Styling */
+.cassava-leaf-pattern {
+  background-image: radial-gradient(rgba(163, 217, 155, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Healthy Mode Activation Glow Animations */
+@keyframes healthGlowPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(163, 217, 155, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 35px 8px rgba(163, 217, 155, 0.45);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(163, 217, 155, 0);
+    transform: scale(1);
+  }
+}
+
+.health-active-glow {
+  animation: healthGlowPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes leafFloat {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-70px) rotate(25deg); opacity: 0; }
+}
+
+.floating-leaf {
+  animation: leafFloat 1.2s forwards ease-out;
+}
