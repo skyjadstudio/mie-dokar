@@ -1,3 +1,9 @@
+export const getAssetUrl = (path) => {
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${base.endsWith('/') ? base : base + '/'}${cleanPath}`;
+};
+
 export const BRAND_INFO = {
   name: "MIE RESHIK CAP DOKAR",
   shortName: "Mie Dokar",
@@ -228,7 +234,7 @@ export const CLIENT_PORTFOLIO = [
     desc: "Sejak 2021, Mie Reshik cap DOKAR menjadi suplier tetap Hotel Novotel, bukti kualitas dan layanan profesional kami yang diakui industri perhotelan bintang.",
     logoText: "NOVOTEL",
     subLogo: "HOTELS & RESORTS",
-    logoImage: "/images/novotel_logo.png",
+    logoImage: getAssetUrl("images/novotel_logo.png"),
     badge: "Hospitality Grade"
   },
   {
@@ -237,7 +243,7 @@ export const CLIENT_PORTFOLIO = [
     desc: "Sejak 2020, Mie Reshik cap DOKAR dipercaya menjadi suplier Lingkar Organik, penyedia berbagai produk organik berskala nasional, sebagai bukti kualitas dan standar alami terverifikasi.",
     logoText: "Lingkar Organik",
     subLogo: "Pangan Sehat Alami Nasional",
-    logoImage: "/images/lingkar_organik_logo.png",
+    logoImage: getAssetUrl("images/lingkar_organik_logo.png"),
     badge: "Organic Certified Supply"
   },
   {
@@ -246,7 +252,7 @@ export const CLIENT_PORTFOLIO = [
     desc: "Mie Reshik cap DOKAR juga menjadi suplier bagi banyak mitra, termasuk yang melakukan repacking maupun reseller di e-commerce seperti Shopee, memastikan produk mudah diakses luas.",
     logoText: "Shopee",
     subLogo: "E-Commerce Reseller Hub",
-    logoImage: "/images/shopee_logo.png",
+    logoImage: getAssetUrl("images/shopee_logo.png"),
     badge: "National Reach"
   }
 ];
@@ -258,7 +264,7 @@ export const TESTIMONIALS = [
     role: "Google Local Guide (182 reviews • 336 photos)",
     stars: 5,
     time: "4 months ago",
-    image: "/images/media_1791530388880.png",
+    image: getAssetUrl("images/media_1791530388880.png"),
     quote: "Mie lethek yang bersih hanya disini. Warna lebih bersih banding yang lain karena produksinya dengan mesin yang baik dan proses yang lebih higienis. Tetapi proses pengeringan masih mempertahankan tradisi lama, pakai sinar matahari sehingga mutu dan keaslian masih sama."
   },
   {
@@ -267,7 +273,7 @@ export const TESTIMONIALS = [
     role: "Media Creator Lempardadu (Sosmed YT / IG / TikTok)",
     stars: 5,
     time: "2 years ago",
-    image: "/images/media_1791530400475.png",
+    image: getAssetUrl("images/media_1791530400475.png"),
     quote: "Tadi pagi ngeliput untuk Sosmed YouTube IG TikTok dari Lempardadu disini pembuatannya bersih banget dan bertemu sama owner dan anaknya baik banget, karyawannya juga ramah ramah semua semoga usahanya semakin berkembang..."
   },
   {
@@ -276,7 +282,7 @@ export const TESTIMONIALS = [
     role: "Konsumen Terverifikasi",
     stars: 5,
     time: "2 years ago",
-    image: "/images/media_1791530411138.png",
+    image: getAssetUrl("images/media_1791530411138.png"),
     quote: "Pembuatan mie lethek tidak menggunakan tenaga sapi, benar-benar higienis."
   },
   {
@@ -285,7 +291,7 @@ export const TESTIMONIALS = [
     role: "Pembeli Terverifikasi Shopee",
     stars: 5,
     time: "2023-09-05",
-    image: "/images/media_1791530421148.png",
+    image: getAssetUrl("images/media_1791530421148.png"),
     quote: "Kualitas: sangat cocok buat yg pengen makan mie tapi takut gluten. Rasa: enak, kenyal. Aku penasaran sama mie reshik ini sampai liat YouTubenya juga, tempat produksinya bersih ga kayak produsen lain."
   },
   {
@@ -294,7 +300,7 @@ export const TESTIMONIALS = [
     role: "Google Reviewer",
     stars: 5,
     time: "2 years ago",
-    image: "/images/media_1791530517719.png",
+    image: getAssetUrl("images/media_1791530517719.png"),
     quote: "Pabrik mie lethek Jogja yang menggunakan mesin dalam pembuatannya."
   }
 ];
@@ -307,7 +313,7 @@ export const CERTIFICATES = [
     issuer: "Badan Penyelenggara Jaminan Produk Halal (BPJPH)",
     validUntil: "10 November 2026",
     holder: "FX. Subeno Prayoga Kastu (Pabrik Mie Dokar)",
-    image: "/images/media_1791530665794.png",
+    image: getAssetUrl("images/media_1791530665794.png"),
     hasBlurOverlay: true,
     desc: "Sertifikat resmi jaminan kehalalan produk pangan untuk varian Mie Reshik cap Dokar."
   },
@@ -318,7 +324,7 @@ export const CERTIFICATES = [
     issuer: "Kementerian Investasi / BKPM RI",
     validUntil: "Berlaku Seumur Hidup Usaha",
     holder: "FX. Subeno Prayoga Kastu",
-    image: "/images/media_1791530720844.png",
+    image: getAssetUrl("images/media_1791530720844.png"),
     hasBlurOverlay: false,
     desc: "Perizinan berusaha legal berbasis risiko untuk industri olahan pangan mikro nasional."
   },
@@ -329,7 +335,7 @@ export const CERTIFICATES = [
     issuer: "Direktorat Jenderal Kekayaan Intelektual - Kemenkumham",
     validUntil: "08 Juli 2029 (10 Tahun Perlindungan)",
     holder: "FX. Subeno / Prayoga Kastu",
-    image: "/images/media_1791530753158.png",
+    image: getAssetUrl("images/media_1791530753158.png"),
     hasBlurOverlay: false,
     desc: "Perlindungan hak eksklusif merek dagang resmi Mie Reshik DOKAR di seluruh wilayah Indonesia."
   }

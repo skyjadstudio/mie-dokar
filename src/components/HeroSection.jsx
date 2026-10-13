@@ -11,7 +11,7 @@ import {
   ToggleLeft, 
   CheckCircle2 
 } from 'lucide-react';
-import { BRAND_INFO } from '../data/productKnowledgeData';
+import { BRAND_INFO, getAssetUrl } from '../data/productKnowledgeData';
 
 export default function HeroSection({ onNavigate, onOpenContact, healthyMode, setHealthyMode }) {
   return (
@@ -61,7 +61,7 @@ export default function HeroSection({ onNavigate, onOpenContact, healthyMode, se
                   healthyMode ? 'border-[#A3D99B] ring-4 ring-[#A3D99B]/30 scale-105' : 'border-[#7A9C78]/50'
                 }`}>
                   <img
-                    src="/images/dokar_logo_official.png"
+                    src={getAssetUrl("images/dokar_logo_official.png")}
                     alt="Official Logo"
                     className="w-full h-full object-cover"
                   />
@@ -138,7 +138,7 @@ export default function HeroSection({ onNavigate, onOpenContact, healthyMode, se
                 {/* High-Resolution Clean Product & Dish Photo */}
                 <div className="relative rounded-2xl overflow-hidden mb-4 bg-[#EBF7E9] border border-[#CFE8CA] flex items-center justify-center">
                   <img
-                    src="/images/mie_losspack_hero_dish.jpg"
+                    src={getAssetUrl("images/mie_losspack_hero_dish.jpg")}
                     alt="Mie Reshik Cap Dokar Losspack 5Kg & Sajian Masak"
                     className="w-full h-auto max-h-[440px] object-cover rounded-2xl shadow-sm hover:scale-102 transition-transform duration-500"
                   />

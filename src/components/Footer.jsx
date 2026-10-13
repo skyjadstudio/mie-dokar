@@ -8,7 +8,7 @@ import {
   ShieldCheck,
   Award
 } from 'lucide-react';
-import { BRAND_INFO } from '../data/productKnowledgeData';
+import { BRAND_INFO, getAssetUrl } from '../data/productKnowledgeData';
 
 export default function Footer({ onOpenContact, onNavigate }) {
   return (
@@ -22,7 +22,7 @@ export default function Footer({ onOpenContact, onNavigate }) {
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full overflow-hidden shadow-md border border-[#7A9C78]/60 shrink-0">
                 <img
-                  src="/images/dokar_logo_official.png"
+                  src={getAssetUrl("images/dokar_logo_official.png")}
                   alt="Official Logo"
                   className="w-full h-full object-cover"
                 />

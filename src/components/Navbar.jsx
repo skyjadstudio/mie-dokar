@@ -12,7 +12,7 @@ import {
   ToggleRight,
   ToggleLeft
 } from 'lucide-react';
-import { BRAND_INFO } from '../data/productKnowledgeData';
+import { BRAND_INFO, getAssetUrl } from '../data/productKnowledgeData';
 
 export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthyMode, setHealthyMode }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,7 +52,7 @@ export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthy
             {/* Official Dokar Logo Image */}
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0 border border-[#7A9C78]/50">
               <img
-                src="/images/dokar_logo_official.png"
+                src={getAssetUrl("images/dokar_logo_official.png")}
                 alt="Logo Resmi Mie Reshik Cap Dokar"
                 className="w-full h-full object-cover"
               />
