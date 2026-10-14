@@ -443,3 +443,4 @@ export default function ProfitCalculator({ onOpenContact }) {
     </section>
   );
 }
+// Updated: Input 2 Bal calculation and auto portion estimate
