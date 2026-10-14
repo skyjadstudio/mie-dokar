@@ -16,8 +16,11 @@ export default function ProfitCalculator({ onOpenContact }) {
   // Mode Kuliner States
   const [portionsPerDay, setPortionsPerDay] = useState(50); // 50 porsi/hari
   const [daysPerMonth, setDaysPerMonth] = useState(26); // 26 hari kerja
-  const [costPerPortion, setCostPerPortion] = useState(1500); // Estimasi modal mie per porsi (fleksibel)
+  const [costPerBalKuliner, setCostPerBalKuliner] = useState(120000); // Estimasi modal beli per bal 5Kg (fleksibel)
   const [sellingPricePerPortion, setSellingPricePerPortion] = useState(16000); // Rp 16.000 / porsi
+
+  // 1 Bal (5Kg) menghasilkan perkiraan ±100 porsi matang standar
+  const calculatedCostPerPortion = costPerBalKuliner > 0 ? Math.round(costPerBalKuliner / 100) : 0;
 
   // Mode Reseller States
   const [resellerMonthlyVolume, setResellerMonthlyVolume] = useState(30); // 30 Bal / bulan
@@ -36,11 +39,11 @@ export default function ProfitCalculator({ onOpenContact }) {
   const totalMonthlyPortions = portionsPerDay * daysPerMonth;
   const estimatedPackages = Math.ceil(totalMonthlyPortions / 100); // 1 bal 5kg menghasilkan ±100 porsi
   const estimatedKg = estimatedPackages * 5;
-  const totalCostKuliner = totalMonthlyPortions * costPerPortion;
+  const totalCostKuliner = estimatedPackages * costPerBalKuliner; // Modal pembelian bal mie
   const totalRevenueKuliner = totalMonthlyPortions * sellingPricePerPortion;
   const grossProfitKuliner = totalRevenueKuliner - totalCostKuliner;
   const marginKuliner = sellingPricePerPortion > 0 
-    ? Math.round(((sellingPricePerPortion - costPerPortion) / sellingPricePerPortion) * 100) 
+    ? Math.round(((sellingPricePerPortion - calculatedCostPerPortion) / sellingPricePerPortion) * 100) 
     : 0;
 
   // Kalkulasi Mode Reseller
@@ -59,7 +62,7 @@ export default function ProfitCalculator({ onOpenContact }) {
   const handleConsultation = () => {
     if (mode === 'kuliner') {
       onOpenContact(
-        `Konsultasi Usaha Kuliner: Target ${portionsPerDay} porsi/hari (${estimatedPackages} Bal Losspack 5Kg/bulan), estimasi laba ${formatRp(grossProfitKuliner)}/bulan. Mohon info harga grosir pabrik.`
+        `Konsultasi Usaha Kuliner: Target ${portionsPerDay} porsi/hari (${estimatedPackages} Bal Losspack 5Kg/bulan), estimasi modal ${formatRp(costPerBalKuliner)}/bal (~${formatRp(calculatedCostPerPortion)}/porsi), proyeksi laba ${formatRp(grossProfitKuliner)}/bulan. Mohon info penawaran harga grosir pabrik.`
       );
     } else {
       onOpenContact(
@@ -170,11 +173,11 @@ export default function ProfitCalculator({ onOpenContact }) {
                     </div>
                   </div>
 
-                  {/* Input 2: Estimasi Modal Mie per Porsi (Fleksibel) */}
+                  {/* Input 2: Estimasi Harga Modal Beli per Bal (5Kg) */}
                   <div className="p-5 rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-[#1E3F33]">
-                        2. Estimasi Modal Mie per Porsi
+                        2. Estimasi Harga Modal Beli per Bal (5Kg)
                       </label>
                       <span className="text-[11px] text-[#5C7368]">Dapat diubah bebas</span>
                     </div>
@@ -184,14 +187,29 @@ export default function ProfitCalculator({ onOpenContact }) {
                       </span>
                       <input
                         type="number"
-                        min="500"
-                        max="10000"
-                        step="100"
-                        value={costPerPortion}
-                        onChange={(e) => setCostPerPortion(Math.max(0, Number(e.target.value)))}
+                        min="10000"
+                        max="300000"
+                        step="5000"
+                        value={costPerBalKuliner}
+                        onChange={(e) => setCostPerBalKuliner(Math.max(0, Number(e.target.value)))}
                         className="w-full pl-11 pr-4 py-2.5 rounded-2xl bg-white border border-[#D5C7B7] text-[#1E3F33] text-sm font-extrabold focus:outline-none focus:ring-2 focus:ring-[#234E3E]"
                       />
                     </div>
+
+                    {/* Auto-calculated portion cost from 1 bal = ±100 portions */}
+                    <div className="p-3 rounded-2xl bg-[#EBF7E9] border border-[#CFE8CA] flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 text-xs text-[#1E3F33] font-bold">
+                        <Sparkles className="w-4 h-4 text-[#234E3E] shrink-0" />
+                        <span>Estimasi Modal per Porsi:</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-sm font-black text-[#234E3E]">
+                          {formatRp(calculatedCostPerPortion)}
+                        </span>
+                        <span className="text-[10.5px] text-[#5C7368] font-semibold"> / porsi (±100 porsi/bal)</span>
+                      </div>
+                    </div>
+
                     <div className="flex items-center justify-between text-[11px] text-[#5C7368] pt-1">
                       <span>Belum tahu harga modal pabrik?</span>
                       <button
@@ -348,6 +366,11 @@ export default function ProfitCalculator({ onOpenContact }) {
                     {formatRp(currentProfit)}
                     <span className="text-xs font-normal text-[#A3D99B]/80"> / bulan</span>
                   </div>
+                  {mode === 'kuliner' && (
+                    <div className="text-[11px] text-[#A3D99B]/90 mt-1 font-semibold">
+                      Modal bahan: {formatRp(calculatedCostPerPortion)} / porsi (±100 porsi / bal)
+                    </div>
+                  )}
                 </div>
                 <div>
                   <span className="inline-flex items-center gap-1 text-xs font-black text-[#1E3F33] bg-[#A3D99B] px-3.5 py-1.5 rounded-full shadow-sm">
