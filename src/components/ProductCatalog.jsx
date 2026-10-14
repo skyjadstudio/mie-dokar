@@ -57,16 +57,16 @@ export default function ProductCatalog({ onSelectProduct, onOpenContact }) {
                   {product.name}
                 </h3>
                 
-                {/* Price Section with Mandatory HET Label & Partnership Note */}
+                {/* Partnership Pricing Banner */}
                 <div className="h-11 mb-3 flex flex-col justify-center">
-                  <div className="flex items-baseline gap-1.5 leading-none">
-                    <span className="text-xl font-extrabold text-[#234E3E] font-display">
-                      Rp 120.000
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF7E9] border border-[#A3D99B]/80 text-xs font-black text-[#1E3F33]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#234E3E]" />
+                      Harga Khusus Kemitraan
                     </span>
-                    <span className="text-xs font-semibold text-[#5C7368]">/ 5Kg</span>
                   </div>
                   <div className="text-[10px] text-[#4F6359] mt-1 font-medium">
-                    <strong className="uppercase font-extrabold tracking-wide">Harga Eceran Tertinggi</strong> <span className="text-[#5C7368]">(hubungi sales untuk harga khusus kemitraan)</span>
+                    Grosir & Partai • <button onClick={() => onOpenContact(`Minta Penawaran Grosir ${product.name}`)} className="text-[#234E3E] font-bold underline hover:text-[#18392D] transition-colors">Minta Penawaran Grosir</button>
                   </div>
                 </div>
 
@@ -77,7 +77,7 @@ export default function ProductCatalog({ onSelectProduct, onOpenContact }) {
                     <span>Target: Catering & Warung Makan</span>
                   </div>
                   <div className="text-xs sm:text-[13px] text-[#385145] leading-snug">
-                    5kg menghasilkan <strong>± 100 porsi</strong> standar warung bakmi (Modal ~Rp 1.200/porsi).
+                    5kg menghasilkan <strong>± 100 porsi</strong> standar warung bakmi (Sangat hemat & menguntungkan).
                   </div>
                 </div>
 
@@ -134,16 +134,16 @@ export default function ProductCatalog({ onSelectProduct, onOpenContact }) {
                   {product.name}
                 </h3>
                 
-                {/* Price Section with Mandatory HET Label & Partnership Note */}
+                {/* Partnership Pricing Banner */}
                 <div className="h-11 mb-3 flex flex-col justify-center">
-                  <div className="flex items-baseline gap-1.5 leading-none">
-                    <span className="text-xl font-extrabold text-[#234E3E] font-display">
-                      Rp 130.000
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF7E9] border border-[#A3D99B]/80 text-xs font-black text-[#1E3F33]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#234E3E]" />
+                      Harga Khusus Kemitraan
                     </span>
-                    <span className="text-xs font-semibold text-[#5C7368]">/ Bal (20 x 250gr)</span>
                   </div>
                   <div className="text-[10px] text-[#4F6359] mt-1 font-medium">
-                    <strong className="uppercase font-extrabold tracking-wide">Harga Eceran Tertinggi</strong> <span className="text-[#5C7368]">(hubungi sales untuk harga khusus kemitraan)</span>
+                    Grosir & Reseller • <button onClick={() => onOpenContact(`Minta Penawaran Reseller ${product.name}`)} className="text-[#234E3E] font-bold underline hover:text-[#18392D] transition-colors">Minta Penawaran Grosir</button>
                   </div>
                 </div>
 
@@ -211,16 +211,16 @@ export default function ProductCatalog({ onSelectProduct, onOpenContact }) {
                   {product.name}
                 </h3>
                 
-                {/* Price Section with Mandatory HET Label & Partnership Note */}
+                {/* Partnership Pricing Banner */}
                 <div className="h-11 mb-3 flex flex-col justify-center">
-                  <div className="flex items-baseline gap-1.5 leading-none">
-                    <span className="text-xl font-extrabold text-[#234E3E] font-display">
-                      Tanyakan
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF7E9] border border-[#A3D99B]/80 text-xs font-black text-[#1E3F33]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#234E3E]" />
+                      Harga Khusus Kemitraan
                     </span>
-                    <span className="text-xs font-semibold text-[#5C7368]">(Hubungi CS)</span>
                   </div>
                   <div className="text-[10px] text-[#4F6359] mt-1 font-medium">
-                    <strong className="uppercase font-extrabold tracking-wide">Harga Eceran Tertinggi</strong> <span className="text-[#5C7368]">(hubungi sales untuk harga khusus kemitraan)</span>
+                    Display & Retail • <button onClick={() => onOpenContact(`Minta Penawaran Retail Display ${product.name}`)} className="text-[#234E3E] font-bold underline hover:text-[#18392D] transition-colors">Minta Penawaran Grosir</button>
                   </div>
                 </div>
 

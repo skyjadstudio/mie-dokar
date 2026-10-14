@@ -35,7 +35,7 @@ export const BRAND_INFO = {
   heroStats: [
     { label: "Bebas Gluten", value: "100%", sub: "Ramah Maag, GERD & Alergi" },
     { label: "Kandungan Serat", value: "16x Lipat", sub: "Lebih Tinggi Dibanding Terigu" },
-    { label: "Porsi per 5Kg", value: "± 100 Porsi", sub: "Modal Hanya ~Rp 1.200/porsi (HET)" },
+    { label: "Porsi per 5Kg", value: "± 100 Porsi", sub: "Sangat Hemat untuk Bisnis Kuliner" },
     { label: "Kapasitas Suplai", value: "1.5 - 2.5 Ton", sub: "Per Siklus Produksi Siap Kirim" }
   ]
 };
@@ -83,14 +83,14 @@ export const PRODUCTS = [
     name: "Mie Kemasan Losspack 5Kg",
     category: "HOREKA & Warung Bakmi",
     badge: "Pilihan Warung & Katering",
-    price: 120000,
-    priceDisplay: "Rp 120.000",
-    priceUnit: "/ 5Kg",
-    priceLabel: "Harga Eceran Tertinggi",
-    priceNote: "Harga Eceran Tertinggi (HET) Rp 120.000 / Kemasan 5Kg. Sistem negosiasi khusus untuk pemesanan minimal 50 pcs / Bal.",
+    price: null,
+    priceDisplay: "Harga Kemitraan",
+    priceUnit: "(Hubungi Sales)",
+    priceLabel: "Harga Khusus Kemitraan",
+    priceNote: "Tersedia harga khusus pabrik untuk pembelian grosir, agen, distributor, dan kemitraan rutin HOREKA.",
     weight: "5.0 Kg / Bal",
     yieldPortion: "± 100 Porsi Standar Warung",
-    costPerPortion: "± Rp 1.200 / Porsi Matang (HET)",
+    costPerPortion: "Sangat Hemat & Bernilai Tinggi",
     capacity: "1.5 - 2.0 Ton (Dapat ditingkatkan hingga 2.5 Ton per siklus)",
     target: "Catering, Warung Makan, Warung Bakmi Jawa, Resto, dan Kemitraan HOREKA",
     desc: "Varian kemasan bal losspack 5 Kg isi untaian mie singkong padat kering. Sangat ekonomis dan menguntungkan dengan daya mekar prima menghasilkan hingga 100 porsi matang lezat.",
@@ -98,7 +98,7 @@ export const PRODUCTS = [
       "1 kemasan 5Kg menghasilkan ± 100 porsi makan standar warung bakmi",
       "Kapasitas suplai pabrik 1.5 - 2.5 ton sekali produksi, siap memenuhi permintaan pasar",
       "Tekstur kenyal alami, tidak mudah lodoh/hancur saat dimasak wajan panas",
-      "Harga Eceran Tertinggi Rp 120.000 (hubungi sales untuk harga khusus kemitraan)"
+      "Tersedia penawaran harga khusus kemitraan dan pembelian grosir"
     ],
     specs: {
       "Bahan Baku": "Tepung Tapioka Pilihan & Tepung Cassava (Singkong) Asli",
@@ -114,11 +114,11 @@ export const PRODUCTS = [
     name: "Mie Dokar Kemasan 5Kg (20 x 250gr)",
     category: "Display Toko & Retail Sembako",
     badge: "Praktis Siap Jual Eceran",
-    price: 130000,
-    priceDisplay: "Rp 130.000",
-    priceUnit: "/ Bal (20 x 250gr)",
-    priceLabel: "Harga Eceran Tertinggi",
-    priceNote: "Harga Eceran Tertinggi (HET) Rp 130.000 / Bal (20 Bungkus x @ 250 gram). Hubungi sales untuk harga khusus kemitraan.",
+    price: null,
+    priceDisplay: "Harga Kemitraan",
+    priceUnit: "(Hubungi Sales)",
+    priceLabel: "Harga Khusus Kemitraan",
+    priceNote: "Tersedia harga khusus grosir untuk reseller, warung sayur, toko kelontong, dan distributor.",
     weight: "20 x 250gr",
     yieldPortion: "20 Bungkus Siap Display",
     costPerPortion: "Margin Reseller Menarik",
@@ -129,7 +129,7 @@ export const PRODUCTS = [
       "Cocok untuk warung sayur dan toko kelontong untuk dijual eceran",
       "Kemasan individual 250 gram rapi, higienis, dan terlindung dari kelembapan",
       "Memudahkan display di rak toko atau gantungan etalase warung kelontong",
-      "Harga Eceran Tertinggi Rp 130.000 per Bal (hubungi sales untuk harga khusus kemitraan)"
+      "Tersedia penawaran harga khusus kemitraan dan reseller"
     ],
     specs: {
       "Isi per Bal": "20 Bungkus Individual x 250 gram",
@@ -145,10 +145,10 @@ export const PRODUCTS = [
     category: "Retail Spesial & Display",
     badge: "Lengkap Bumbu Alami",
     price: null,
-    priceDisplay: "Tanyakan",
+    priceDisplay: "Harga Kemitraan",
     priceUnit: "(Hubungi CS)",
-    priceLabel: "Harga Eceran Tertinggi",
-    priceNote: "Harga Eceran Tertinggi: Tanyakan langsung ke CS / Sales untuk katalog display toko & harga khusus kemitraan.",
+    priceLabel: "Harga Khusus Kemitraan",
+    priceNote: "Tanyakan langsung ke CS / Sales untuk katalog display toko & harga khusus kemitraan.",
     weight: "250 gram / pack",
     yieldPortion: "3 - 4 Porsi Kenyang Keluarga",
     costPerPortion: "Sangat Terjangkau",
@@ -159,7 +159,7 @@ export const PRODUCTS = [
       "Sudah disertai bumbu alami siap saji yang lezat",
       "Kemasan sablon eksklusif dan higienis tersegel rapat",
       "Pilihan tepat untuk konsumsi harian keluarga peduli kesehatan & anak-anak",
-      "Tanyakan HET ke CS (hubungi sales untuk harga khusus kemitraan)"
+      "Hubungi sales untuk katalog display & harga khusus kemitraan"
     ],
     specs: {
       "Bahan Baku": "Singkong Cassava Asli, Tapioka Murni, Bumbu Rempah Alami",

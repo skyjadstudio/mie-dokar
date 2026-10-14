@@ -54,14 +54,14 @@ export default function ProductDetailModal({ product, onClose, onOpenContact }) 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
           <div className="p-3.5 rounded-2xl bg-[#EBF7E9] border border-[#CFE8CA]">
-            <div className="text-[10px] font-bold uppercase text-[#234E3E] mb-1">Harga Eceran Tertinggi</div>
-            <div className="text-sm font-extrabold text-[#1E3F33]">{product.priceDisplay} {product.priceUnit}</div>
-            <div className="text-[10px] text-[#5C7368] mt-0.5">Hubungi sales untuk harga khusus kemitraan</div>
+            <div className="text-[10px] font-bold uppercase text-[#234E3E] mb-1">Skema Harga</div>
+            <div className="text-sm font-extrabold text-[#1E3F33]">{product.priceDisplay}</div>
+            <div className="text-[10px] text-[#5C7368] mt-0.5">Hubungi sales untuk penawaran grosir & partai</div>
           </div>
           <div className="p-3.5 rounded-2xl bg-[#EBF7E9] border border-[#CFE8CA]">
             <div className="text-[10px] font-bold uppercase text-[#234E3E] mb-1">Daya Hasilkan Porsi</div>
             <div className="text-xs font-bold text-[#1E3F33]">{product.yieldPortion}</div>
-            <div className="text-[10px] text-[#5C7368] mt-0.5">Biaya: {product.costPerPortion}</div>
+            <div className="text-[10px] text-[#5C7368] mt-0.5">Efisiensi: {product.costPerPortion}</div>
           </div>
           <div className="p-3.5 rounded-2xl bg-[#EBF7E9] border border-[#CFE8CA]">
             <div className="text-[10px] font-bold uppercase text-[#234E3E] mb-1">Target Segmen</div>
