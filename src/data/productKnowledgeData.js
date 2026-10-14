@@ -302,6 +302,15 @@ export const TESTIMONIALS = [
     time: "2 years ago",
     image: getAssetUrl("images/media_1791530517719.png"),
     quote: "Pabrik mie lethek Jogja yang menggunakan mesin dalam pembuatannya."
+  },
+  {
+    id: 6,
+    name: "Kadi",
+    role: "Google Local Guide (166 reviews)",
+    stars: 5,
+    time: "3 years ago",
+    image: getAssetUrl("images/media_1791999974353.jpg"),
+    quote: "Pabrik Mie yang bersih makanya brandingnya mie reshik bukan mie lethek, karena emang tempat produksinya mengutamakan kebersihan. Sudah tersertifikasi halal. Ownernya pak Be dan anaknya mas Restu luar biasa baik dan ramah. Banyak sekali sharing dari pak Be sungguh luar biasa. Karyawan juga ramah2 dan baik. Semoga semakin sukses usahanya semakin maju dan bermanfaat buat banyak orang"
   }
 ];
 
