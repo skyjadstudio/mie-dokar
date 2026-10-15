@@ -107,22 +107,22 @@ export default function HeroSection({ onNavigate, onOpenContact, healthyMode, se
               </button>
             </div>
 
-            {/* Action CTA Buttons - side-by-side on mobile */}
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-3 pt-2 w-full max-w-lg">
+            {/* Action CTA Buttons - ALWAYS side-by-side on both mobile and laptop */}
+            <div className="flex flex-row items-center gap-2 sm:gap-3.5 pt-2 w-full">
               <button
                 onClick={() => onNavigate('produk')}
-                className="btn-curved bg-[#7A9C78] hover:bg-[#688A66] text-white px-2.5 sm:px-7 py-2.5 sm:py-3.5 text-[11px] sm:text-sm font-black shadow-lg border border-[#8FB58D] flex items-center justify-center gap-1 sm:gap-2 text-center"
+                className="flex-1 sm:flex-initial btn-curved bg-[#7A9C78] hover:bg-[#688A66] text-white px-2.5 sm:px-6 py-2.5 sm:py-3.5 text-[11px] sm:text-sm font-black shadow-lg border border-[#8FB58D] flex items-center justify-center gap-1 sm:gap-2 text-center"
               >
-                <span className="leading-tight">Lihat Varian Losspack (5Kg)</span>
-                <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 hidden sm:inline-block" />
+                <span className="leading-snug sm:whitespace-nowrap">Lihat Varian Losspack (5Kg)</span>
+                <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
               </button>
 
               <button
                 onClick={() => onNavigate('kalkulator')}
-                className="btn-curved btn-soft-white px-2.5 sm:px-6 py-2.5 sm:py-3.5 text-[11px] sm:text-sm font-extrabold flex items-center justify-center gap-1 sm:gap-2 text-center shadow-xs"
+                className="flex-1 sm:flex-initial btn-curved btn-soft-white px-2.5 sm:px-6 py-2.5 sm:py-3.5 text-[11px] sm:text-sm font-extrabold flex items-center justify-center gap-1.5 sm:gap-2 text-center shadow-xs"
               >
                 <Calculator className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1E3F33] shrink-0" />
-                <span className="leading-tight">Simulasi Porsi & Untung</span>
+                <span className="leading-snug sm:whitespace-nowrap">Simulasi Porsi & Untung</span>
               </button>
             </div>
 
