@@ -137,7 +137,7 @@ export default function Footer({ onOpenContact, onNavigate }) {
         {/* Bottom Copyright */}
         <div className="border-t border-[#2D5A49] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#A3D99B]/80">
           <div>
-            © 2014 - 2026 <strong>Mie Reshik Cap DOKAR</strong> (FX. Subeno Prayoga Kastu). All Rights Reserved.
+            © 2014 - 2026 <strong>Mie Reshik Cap DOKAR</strong> (FX. Subeno). All Rights Reserved.
           </div>
           <div className="flex items-center gap-1 text-white">
             <span>Aktifkan mode sehatmu</span>

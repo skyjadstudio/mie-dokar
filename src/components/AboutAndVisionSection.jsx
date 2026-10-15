@@ -83,7 +83,7 @@ export default function AboutAndVisionSection() {
                     <span>Founder & Pengelola:</span>
                   </div>
                   <div className="text-sm font-extrabold text-[#1E3F33]">
-                    FX. Subeno Prayoga Kastu
+                    FX. Subeno
                   </div>
                   <div className="text-[11px] text-[#5C7368]">
                     Komitmen menghadirkan mie tradisional sehat dengan integritas mutu dan higienitas modern.
