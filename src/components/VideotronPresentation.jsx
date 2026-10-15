@@ -10,7 +10,8 @@ import {
   Phone, 
   Globe, 
   MapPin, 
-  CheckCircle2
+  CheckCircle2,
+  Sparkles
 } from 'lucide-react';
 import { getAssetUrl, BRAND_INFO } from '../data/productKnowledgeData';
 
@@ -305,7 +306,7 @@ export default function VideotronPresentation({ onClose }) {
               {/* Bottom Footer */}
               <div className="flex items-center justify-between h-[50px] border-t border-white/10 text-lg text-white/60">
                 <span>📍 Pabrik: Srandakan, Bantul, D.I. Yogyakarta</span>
-                <span className="font-black text-[#A3D99B]">skyjadstudio.github.io/mie-dokar</span>
+                <span className="font-black text-[#A3D99B]">MIE RESHIK CAP DOKAR • MAKANAN SEHAT UNTUK HARIMU</span>
               </div>
             </div>
           )}
@@ -817,11 +818,11 @@ export default function VideotronPresentation({ onClose }) {
                     </div>
                     <div className="flex items-center gap-5">
                       <span className="w-13 h-13 rounded-full bg-[#A3D99B] text-[#0A1F16] flex items-center justify-center font-black shrink-0 p-3">
-                        <Globe className="w-7 h-7" />
+                        <Sparkles className="w-7 h-7" />
                       </span>
                       <div>
-                        <div className="text-sm font-bold text-[#A3D99B]">Kunjungi Website Resmi:</div>
-                        <div className="text-[24px] font-black text-white">skyjadstudio.github.io/mie-dokar</div>
+                        <div className="text-sm font-bold text-[#A3D99B]">Layanan & Bimbingan Usaha:</div>
+                        <div className="text-[22px] font-black text-white">Konsultasi Usaha Kuliner & Resep Gratis</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-5">
@@ -839,7 +840,7 @@ export default function VideotronPresentation({ onClose }) {
                 <div className="w-[680px] flex justify-center">
                   <div className="w-[580px] p-9 rounded-[36px] border-4 border-[#A3D99B] bg-white text-[#0A1F16] text-center flex flex-col items-center gap-4 shadow-[0_15px_50px_rgba(163,217,155,0.4)]">
                     <div className="text-xl font-black uppercase tracking-wider text-[#143727]">
-                      SCAN UNTUK AKSES WEB RESMI
+                      SCAN UNTUK INFO LENGKAP & KATALOG
                     </div>
                     <img 
                       src={getAssetUrl("images/qr-code-mie-dokar.png")} 
