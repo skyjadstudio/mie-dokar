@@ -677,71 +677,108 @@ export default function VideotronPresentation({ onClose }) {
             <div className="w-full h-full flex flex-col justify-between relative z-10 animate-fadeIn">
               <div className="flex items-center justify-between h-[50px]">
                 <div className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#A3D99B]/15 border-[1.5px] border-[#A3D99B] text-[#A3D99B] font-black text-lg">
-                  <span>📜 LEGALITAS & INTEGRITAS • 100% AMAN & RESMI TERDAFTAR</span>
+                  <span>📜 DOKUMEN LEGALITAS & SERTIFIKASI RESMI</span>
                 </div>
-                <div className="text-lg font-black text-white/80">
-                  KEPERCAYAAN ADALAH PRIORITAS
+                <div className="text-lg font-black text-white/85">
+                  100% AMAN, HIGIENIS & TERVERIFIKASI NEGARA
                 </div>
               </div>
 
-              <div className="flex items-center justify-between h-[740px]">
-                <div className="w-[780px] flex flex-col gap-6">
-                  <h2 className="text-[54px] font-black leading-tight text-white font-display">
-                    Sertifikasi Lengkap & <span className="text-[#A3D99B]">Terverifikasi Resmi</span>
-                  </h2>
-                  <p className="text-[22px] text-[#D0E2CE] leading-relaxed">
-                    Mie Reshik Cap Dokar menjamin setiap kemasan yang beredar telah mengantongi izin resmi pemerintah, sertifikasi halal, dan perlindungan merek terdaftar.
-                  </p>
-                  <div className="p-7 rounded-[24px] bg-[#143425] border-2 border-[#275941] flex flex-col gap-2">
-                    <div className="text-[24px] font-black text-[#A3D99B]">Integritas Pendiri (FX. Subeno):</div>
-                    <div className="text-[19px] text-[#C8E4C4] leading-relaxed">
-                      Dirintis dengan komitmen menyejahterakan petani singkong lokal serta memajukan kedaulatan pangan sehat alami nusantara.
-                    </div>
+              <div className="flex flex-col justify-between h-[740px]">
+                {/* Header Title */}
+                <div className="flex items-end justify-between border-b border-white/10 pb-3">
+                  <div>
+                    <h2 className="text-[42px] font-black text-white leading-tight font-display">
+                      Bukti Fisik Sertifikasi <span className="text-[#A3D99B]">Halal, NIB & HAKI Merek</span>
+                    </h2>
+                    <p className="text-[19px] text-[#D0E2CE] mt-1">
+                      Dokumen legal resmi dari Kementerian Agama RI (BPJPH), BKPM RI (NIB), dan Kemenkumham RI (HAKI).
+                    </p>
+                  </div>
+                  <div>
+                    <span className="text-[15px] font-extrabold text-[#F3B23E] bg-[#F3B23E]/15 border border-[#F3B23E]/40 py-1.5 px-4 rounded-full">
+                      ✔ Dokumen Sah & Terverifikasi
+                    </span>
                   </div>
                 </div>
 
-                <div className="w-[960px] grid grid-cols-2 gap-6">
-                  <div className="p-8 rounded-[26px] border-2 border-[#2E6B4F] bg-[#163B2C] flex flex-col gap-3">
-                    <div className="text-4xl">🕌</div>
-                    <div className="text-[22px] font-black text-white">Sertifikat Halal Resmi</div>
-                    <div className="text-[17px] font-mono font-black text-[#A3D99B] bg-[#0E261C] p-2.5 rounded-xl">
-                      ID34110000559820922
+                {/* 3 Certificate Columns Grid */}
+                <div className="grid grid-cols-3 gap-7 h-[620px]">
+                  {/* 1. Halal Certificate */}
+                  <div className="bg-[#133324] border-[2.5px] border-[#2B684C] rounded-[26px] p-4.5 flex flex-col justify-between shadow-2xl">
+                    <div className="h-[430px] bg-white rounded-[18px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
+                      <img 
+                        src={getAssetUrl("images/cert_halal.png")} 
+                        alt="Sertifikat Halal Resmi" 
+                        className="w-full h-full object-contain object-top p-1"
+                      />
+                      <div className="absolute left-[6.5%] right-[6.5%] top-[56.6%] h-[4.6%] backdrop-blur-md bg-white/70 pointer-events-none" />
                     </div>
-                    <div className="text-sm text-[#D0E2CE]">Diterbitkan resmi oleh BPJPH Kemenag RI</div>
+                    <div className="flex flex-col gap-1.5 pt-3">
+                      <div className="text-xl font-black text-white flex items-center justify-between">
+                        <span>Sertifikat Halal Resmi</span>
+                        <span className="text-xs font-black text-[#A3D99B] bg-[#0A1F16] px-2.5 py-0.5 rounded">BPJPH</span>
+                      </div>
+                      <div className="text-base font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1.5 px-3 rounded-lg text-center">
+                        ID34110000559820922
+                      </div>
+                      <div className="text-sm font-bold text-[#D0E2CE] text-center">
+                        Kemenag RI • Berlaku s.d. 10 Nov 2026
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="p-8 rounded-[26px] border-2 border-[#2E6B4F] bg-[#163B2C] flex flex-col gap-3">
-                    <div className="text-4xl">🏛️</div>
-                    <div className="text-[22px] font-black text-white">Nomor Induk Berusaha</div>
-                    <div className="text-[17px] font-mono font-black text-[#A3D99B] bg-[#0E261C] p-2.5 rounded-xl">
-                      1205000111318
+                  {/* 2. NIB Certificate */}
+                  <div className="bg-[#133324] border-[2.5px] border-[#2B684C] rounded-[26px] p-4.5 flex flex-col justify-between shadow-2xl">
+                    <div className="h-[430px] bg-white rounded-[18px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
+                      <img 
+                        src={getAssetUrl("images/cert_nib.png")} 
+                        alt="Nomor Induk Berusaha" 
+                        className="w-full h-full object-contain object-top p-1"
+                      />
                     </div>
-                    <div className="text-sm text-[#D0E2CE]">Kementerian Investasi / BKPM RI</div>
+                    <div className="flex flex-col gap-1.5 pt-3">
+                      <div className="text-xl font-black text-white flex items-center justify-between">
+                        <span>Nomor Induk Berusaha (NIB)</span>
+                        <span className="text-xs font-black text-[#A3D99B] bg-[#0A1F16] px-2.5 py-0.5 rounded">BKPM RI</span>
+                      </div>
+                      <div className="text-base font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1.5 px-3 rounded-lg text-center">
+                        1205000111318
+                      </div>
+                      <div className="text-sm font-bold text-[#D0E2CE] text-center">
+                        Kementerian Investasi • Berlaku Seumur Hidup
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="p-8 rounded-[26px] border-2 border-[#2E6B4F] bg-[#163B2C] flex flex-col gap-3">
-                    <div className="text-4xl">🛡️</div>
-                    <div className="text-[22px] font-black text-white">HAKI Merek Terdaftar</div>
-                    <div className="text-[17px] font-mono font-black text-[#A3D99B] bg-[#0E261C] p-2.5 rounded-xl">
-                      IDM000835742
+                  {/* 3. HAKI Certificate */}
+                  <div className="bg-[#133324] border-[2.5px] border-[#2B684C] rounded-[26px] p-4.5 flex flex-col justify-between shadow-2xl">
+                    <div className="h-[430px] bg-white rounded-[18px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
+                      <img 
+                        src={getAssetUrl("images/cert_haki.png")} 
+                        alt="Sertifikat Merek HAKI" 
+                        className="w-full h-full object-contain object-top p-1"
+                      />
                     </div>
-                    <div className="text-sm text-[#D0E2CE]">Hak Eksklusif Kemenkumham RI</div>
-                  </div>
-
-                  <div className="p-8 rounded-[26px] border-2 border-[#2E6B4F] bg-[#163B2C] flex flex-col gap-3">
-                    <div className="text-4xl">🔬</div>
-                    <div className="text-[22px] font-black text-white">Uji Mutu Laboratorium</div>
-                    <div className="text-[17px] font-mono font-black text-[#F3B23E] bg-[#0E261C] p-2.5 rounded-xl">
-                      Lab Pangan UGM & Dinkes
+                    <div className="flex flex-col gap-1.5 pt-3">
+                      <div className="text-xl font-black text-white flex items-center justify-between">
+                        <span>Sertifikat Merek (HAKI)</span>
+                        <span className="text-xs font-black text-[#A3D99B] bg-[#0A1F16] px-2.5 py-0.5 rounded">Kemenkumham</span>
+                      </div>
+                      <div className="text-base font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1.5 px-3 rounded-lg text-center">
+                        IDM000835742
+                      </div>
+                      <div className="text-sm font-bold text-[#D0E2CE] text-center">
+                        DJKI Kemenkumham RI • Hak Eksklusif Merek Dokar
+                      </div>
                     </div>
-                    <div className="text-sm text-[#D0E2CE]">Inspeksi berkala kualitas air Puskesmas</div>
                   </div>
                 </div>
               </div>
 
               <div className="flex items-center justify-between h-[50px] border-t border-white/10 text-lg text-white/60">
-                <span>Menjamin Keamanan Pangan Bagi Pelanggan & Mitra Anda</span>
-                <span className="font-black text-[#A3D99B]">100% AMAN DIKONSUMSI SETIAP HARI</span>
+                <span>🔬 Teruji Laboratorium Pangan UGM & Kualitas Air Teruji Puskesmas Berkala</span>
+                <span className="font-black text-[#A3D99B]">100% AMAN, HIGIENIS & RESMI TERDAFTAR</span>
               </div>
             </div>
           )}
