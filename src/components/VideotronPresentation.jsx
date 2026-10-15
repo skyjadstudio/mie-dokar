@@ -277,14 +277,26 @@ export default function VideotronPresentation({ onClose }) {
                 </div>
 
                 <div className="w-[680px] flex justify-center items-center">
-                  <div className="w-[580px] h-[580px] rounded-[40px] bg-gradient-to-tr from-[#163829] to-[#255741] border-[3px] border-[#A3D99B] flex flex-col items-center justify-center relative shadow-[0_0_50px_rgba(163,217,155,0.3)]">
-                    <img 
-                      src={getAssetUrl("images/hero_food_plate.png")} 
-                      alt="Mie Reshik Cap Dokar" 
-                      className="w-[480px] h-[480px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)]"
-                    />
-                    <div className="absolute bottom-6 left-6 right-6 bg-[#0A1F16]/95 border-[1.5px] border-[#A3D99B] rounded-[18px] py-3 px-5 text-center text-lg font-black text-[#A3D99B]">
-                      100% Singkong Pilihan • Kenyal Alami • Bukan Terigu
+                  <div className="w-[620px] h-[680px] rounded-[36px] border-[3px] border-[#A3D99B] bg-[#0B2318] overflow-hidden relative shadow-[0_20px_60px_rgba(0,0,0,0.8)] flex flex-col justify-between">
+                    {/* Full Photo with Clean Aspect */}
+                    <div className="w-full h-[560px] overflow-hidden relative">
+                      <img 
+                        src={getAssetUrl("images/hero_food_plate.png")} 
+                        alt="Mie Reshik Cap Dokar" 
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute top-5 right-5 bg-[#0A1F16]/92 border-[1.5px] border-[#F3B23E] rounded-full py-2 px-5 text-base font-black text-[#F3B23E] shadow-xl">
+                        ★ Menu Andalan Sehat
+                      </div>
+                    </div>
+                    {/* Bottom Info Bar */}
+                    <div className="h-[120px] bg-[#081A12] border-t-2 border-[#1E4A35] flex flex-col items-center justify-center gap-1.5 px-6">
+                      <div className="text-[22px] font-black text-[#A3D99B] tracking-[0.5px]">
+                        100% Singkong Pilihan • Kenyal Alami • Bukan Terigu
+                      </div>
+                      <div className="text-base font-bold text-[#D0E2CE]">
+                        Kenyal Sempurna • Rendah Gula • Aman untuk Lambung
+                      </div>
                     </div>
                   </div>
                 </div>
