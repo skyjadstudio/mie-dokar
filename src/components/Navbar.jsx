@@ -10,12 +10,11 @@ import {
   X,
   Award,
   ToggleRight,
-  ToggleLeft,
-  QrCode
+  ToggleLeft
 } from 'lucide-react';
 import { BRAND_INFO, getAssetUrl } from '../data/productKnowledgeData';
 
-export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthyMode, setHealthyMode, onOpenQrCode }) {
+export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthyMode, setHealthyMode }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -118,16 +117,6 @@ export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthy
               )}
             </button>
 
-            {/* Desktop Barcode Button */}
-            <button
-              onClick={onOpenQrCode}
-              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-bold transition-all bg-white/10 text-white/90 border-white/20 hover:bg-white/20 shrink-0"
-              title="Buka Barcode / QR Code Website"
-            >
-              <QrCode className="w-3.5 h-3.5 text-[#A3D99B]" />
-              <span>Barcode Web</span>
-            </button>
-
             {/* Desktop Only CTA Hubungi Sales */}
             <button
               onClick={() => onOpenContact('Pemesanan & Kerjasama Mie Reshik Cap Dokar')}
@@ -193,22 +182,6 @@ export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthy
               })}
             </div>
             
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenQrCode();
-              }}
-              className="w-full mb-2 p-3 rounded-2xl bg-[#1E3F33] hover:bg-[#2A5C4A] text-white text-xs font-semibold flex items-center justify-between border border-[#2D5E4C] transition-all"
-            >
-              <div className="flex items-center gap-2.5">
-                <QrCode className="w-4 h-4 text-[#A3D99B]" />
-                <span>Barcode / QR Code Website</span>
-              </div>
-              <span className="text-[10px] bg-[#7A9C78]/30 text-[#A3D99B] px-2 py-0.5 rounded-full font-bold">
-                Buka
-              </span>
-            </button>
-
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
