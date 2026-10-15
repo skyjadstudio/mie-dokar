@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide 3 - Standar Produksi Higienis - Mie Reshik Cap Dokar</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap');
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+html, body {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background-color: #000000;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: #FFFFFF;
+}
+.slide-canvas {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  background: linear-gradient(135deg, #0A2217 0%, #103022 50%, #081811 100%);
+  padding: 56px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.ambient-glow-1 {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: rgba(163,217,155,0.12);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.ambient-glow-2 {
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: rgba(243,178,62,0.12);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.slide {
+  display: flex !important;
+  opacity: 1 !important;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+}
+.text-matcha { color: #A3D99B; }
+.text-gold { color: #F3B23E; }
+.text-muted { color: #D0E2CE; }
+.border-matcha { border-color: #A3D99B; }
+.border-dark { border-color: #2D654E; }
+.bg-dark-card { background-color: #143727; }
+.bg-dark-card-2 { background-color: #163B2C; }
+.led-glow-green { text-shadow: 0 0 28px rgba(163, 217, 155, 0.5); }
+.led-glow-gold { text-shadow: 0 0 28px rgba(243, 178, 62, 0.5); }
+</style>
+</head>
+<body>
+  <div class="slide-canvas">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+    <div class="slide" data-index="3">
+          <div style="display:flex; align-items:center; justify-content:space-between; height:50px;">
+            <div style="display:inline-flex; align-items:center; gap:10px; padding:10px 24px; border-radius:9999px; background:rgba(163,217,155,0.15); border:1.5px solid #A3D99B; color:#A3D99B; font-weight:900; font-size:18px;">
+              <span>⚙️ STANDAR PABRIK SEMI-MODERN • 100% HIGIENIS</span>
+            </div>
+            <div style="font-size:18px; font-weight:900; color:rgba(255,255,255,0.8);">
+              TIDAK MENGGUNAKAN TENAGA HEWAN
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; height:740px;">
+            <div style="width:840px; display:flex; flex-direction:column; gap:26px;">
+              <div style="font-size:54px; font-weight:900; line-height:1.15; color:#FFFFFF;">
+                Mesin Stainless Steel <span class="text-matcha">304 Food Grade</span>
+              </div>
+
+              <p style="font-size:22px; color:#D0E2CE; line-height:1.6;">
+                Berbeda dengan produsen tradisional lainnya, Mie Reshik Cap Dokar diproduksi semi-modern dengan mesin baja nirkarat <strong>stainless steel 304 food grade</strong> demi menjamin mutu pangan bersih tanpa kontaminasi.
+              </p>
+
+              <div style="display:flex; flex-direction:column; gap:16px; padding-top:8px;">
+                <div style="display:flex; align-items:center; gap:16px; font-size:22px; font-weight:800; color:#fff;">
+                  <span style="width:36px; height:36px; border-radius:50%; background:#A3D99B; color:#0A1F16; font-size:18px; display:inline-flex; align-items:center; justify-content:center; font-weight:900; flex-shrink:0;">✓</span>
+                  <span>100% Higienis Tanpa Tenaga Hewan / Sapi</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:16px; font-size:22px; font-weight:800; color:#fff;">
+                  <span style="width:36px; height:36px; border-radius:50%; background:#A3D99B; color:#0A1F16; font-size:18px; display:inline-flex; align-items:center; justify-content:center; font-weight:900; flex-shrink:0;">✓</span>
+                  <span>Pengeringan Sinar Matahari Alami untuk Kekenyalan Asli</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:16px; font-size:22px; font-weight:800; color:#fff;">
+                  <span style="width:36px; height:36px; border-radius:50%; background:#A3D99B; color:#0A1F16; font-size:18px; display:inline-flex; align-items:center; justify-content:center; font-weight:900; flex-shrink:0;">✓</span>
+                  <span>Teruji Laboratorium Pangan UGM & Kualitas Air Cek Puskesmas</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 Big Metric Cards -->
+            <div style="width:900px; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+              <div style="padding:36px 30px; border-radius:28px; background:#143526; border:2px solid #285A43; text-align:center; display:flex; flex-direction:column; gap:10px;">
+                <div style="font-size:60px; font-weight:900; color:#A3D99B; line-height:1;">0%</div>
+                <div style="font-size:24px; font-weight:900; color:#fff;">Pengawet Kimia</div>
+                <div style="font-size:17px; color:#A3D99B;">Tahan 12 bulan alami berkat kadar air rendah</div>
+              </div>
+
+              <div style="padding:36px 30px; border-radius:28px; background:#143526; border:2px solid #285A43; text-align:center; display:flex; flex-direction:column; gap:10px;">
+                <div style="font-size:60px; font-weight:900; color:#A3D99B; line-height:1;">0%</div>
+                <div style="font-size:24px; font-weight:900; color:#fff;">Pewarna Sintetik</div>
+                <div style="font-size:17px; color:#A3D99B;">Warna coklat bening asli pati singkong</div>
+              </div>
+
+              <div style="padding:36px 30px; border-radius:28px; background:#143526; border:2px solid #285A43; text-align:center; display:flex; flex-direction:column; gap:10px;">
+                <div style="font-size:60px; font-weight:900; color:#A3D99B; line-height:1;">0%</div>
+                <div style="font-size:24px; font-weight:900; color:#fff;">Pengenyal Buatan</div>
+                <div style="font-size:17px; color:#A3D99B;">Kenyal alami gelatinisasi tapioka murni</div>
+              </div>
+
+              <div style="padding:36px 30px; border-radius:28px; background:#143526; border:2px solid #285A43; text-align:center; display:flex; flex-direction:column; gap:10px;">
+                <div style="font-size:60px; font-weight:900; color:#F3B23E; line-height:1;">2.5 Ton</div>
+                <div style="font-size:24px; font-weight:900; color:#fff;">Kapasitas Suplai</div>
+                <div style="font-size:17px; color:#F3B23E;">Per siklus produksi siap kirim stabil</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; height:50px; border-top:1px solid rgba(255,255,255,0.12); font-size:18px; color:rgba(255,255,255,0.6);">
+            <span>Keamanan Pangan Terjamin untuk Konsumen Rumah Tangga & Bisnis Kuliner</span>
+            <span style="font-weight:900; color:#A3D99B;">MIE RESHIK = MIE BERSIH & BERMUTU</span>
+          </div>
+        </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide 2 - Singkong Alami vs Terigu - Mie Reshik Cap Dokar</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap');
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+html, body {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background-color: #000000;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: #FFFFFF;
+}
+.slide-canvas {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  background: linear-gradient(135deg, #0A2217 0%, #103022 50%, #081811 100%);
+  padding: 56px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.ambient-glow-1 {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: rgba(163,217,155,0.12);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.ambient-glow-2 {
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: rgba(243,178,62,0.12);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.slide {
+  display: flex !important;
+  opacity: 1 !important;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+}
+.text-matcha { color: #A3D99B; }
+.text-gold { color: #F3B23E; }
+.text-muted { color: #D0E2CE; }
+.border-matcha { border-color: #A3D99B; }
+.border-dark { border-color: #2D654E; }
+.bg-dark-card { background-color: #143727; }
+.bg-dark-card-2 { background-color: #163B2C; }
+.led-glow-green { text-shadow: 0 0 28px rgba(163, 217, 155, 0.5); }
+.led-glow-gold { text-shadow: 0 0 28px rgba(243, 178, 62, 0.5); }
+</style>
+</head>
+<body>
+  <div class="slide-canvas">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+    <div class="slide" data-index="2">
+          <!-- Top Header -->
+          <div style="display:flex; align-items:center; justify-content:space-between; height:50px;">
+            <div style="display:inline-flex; align-items:center; gap:10px; padding:10px 24px; border-radius:9999px; background:rgba(243,178,62,0.15); border:1.5px solid rgba(243,178,62,0.5); color:#F3B23E; font-weight:900; font-size:18px;">
+              <span>⚡ REVOLUSI SEHAT • SINGKONG VS TEPUNG TERIGU</span>
+            </div>
+            <div style="font-size:18px; font-weight:900; color:#A3D99B; letter-spacing:2px;">
+              SOLUSI DIET & GAYA HIDUP SEHAT
+            </div>
+          </div>
+
+          <!-- Middle Content -->
+          <div style="display:flex; align-items:center; justify-content:space-between; height:740px;">
+            <!-- Left Info -->
+            <div style="width:780px; display:flex; flex-direction:column; gap:26px;">
+              <div style="font-size:54px; font-weight:900; line-height:1.15; color:#FFFFFF;">
+                Bukan Terigu, Tapi <span class="text-matcha">Singkong Asli Pilihan!</span>
+              </div>
+
+              <p style="font-size:22px; color:#D0E2CE; line-height:1.6;">
+                Tepung terigu tinggi gluten dan indeks glikemik yang memicu risiko diabetes dan gangguan pencernaan. Mie Dokar menghadirkan <strong>karbohidrat kompleks alami</strong> yang aman dikonsumsi setiap hari.
+              </p>
+
+              <div style="padding:28px 34px; border-radius:24px; background:#143526; border:2px solid #285A43; display:flex; align-items:center; gap:28px;">
+                <div style="font-size:80px; font-weight:900; line-height:1; color:#F3B23E;">16x</div>
+                <div style="font-size:22px; font-weight:800; color:#FFFFFF; line-height:1.4;">
+                  Lebih kaya serat alami dibanding mie terigu biasa. Menjaga kenyang lebih lama tanpa bikin begah!
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Comparison & Cards -->
+            <div style="width:950px; display:flex; flex-direction:column; gap:22px;">
+              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+                <div style="padding:20px; border-radius:20px; background:#163B2C; border:1.5px solid #2D654E; display:flex; flex-direction:column; gap:8px;">
+                  <div style="font-size:32px;">🌾</div>
+                  <div style="font-size:20px; font-weight:900; color:#fff;">Bebas Gluten</div>
+                  <div style="font-size:15px; color:#D0E2CE;">Aman maag, GERD, celiac & autoimun.</div>
+                </div>
+                <div style="padding:20px; border-radius:20px; background:#163B2C; border:1.5px solid #2D654E; display:flex; flex-direction:column; gap:8px;">
+                  <div style="font-size:32px;">🩸</div>
+                  <div style="font-size:20px; font-weight:900; color:#fff;">Rendah Gula</div>
+                  <div style="font-size:15px; color:#D0E2CE;">Low GI, cegah lonjakan gula darah.</div>
+                </div>
+                <div style="padding:20px; border-radius:20px; background:#163B2C; border:1.5px solid #2D654E; display:flex; flex-direction:column; gap:8px;">
+                  <div style="font-size:32px;">⚖️</div>
+                  <div style="font-size:20px; font-weight:900; color:#fff;">Kenyang Lama</div>
+                  <div style="font-size:15px; color:#D0E2CE;">Serat padat, energi stabil tanpa kantuk.</div>
+                </div>
+              </div>
+
+              <!-- Table -->
+              <div style="border-radius:22px; overflow:hidden; border:2px solid #2D654E; background:#102B1F; font-size:18px;">
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:18px 24px; font-weight:900; text-align:center; color:#A3D99B; background:#19402E;">
+                  <div style="text-align:left;">Parameter Pangan</div>
+                  <div>Mie Dokar (Singkong)</div>
+                  <div style="color:rgba(255,255,255,0.6);">Mie Terigu Biasa</div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:16px 24px; border-top:1px solid #1C4834; text-align:center;">
+                  <span style="font-weight:800; text-align:left;">Gluten</span>
+                  <span style="color:#A3D99B; font-weight:900;">0% (Bebas Gluten)</span>
+                  <span style="color:rgba(255,255,255,0.6);">Tinggi Gluten</span>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:16px 24px; border-top:1px solid #1C4834; text-align:center; background:rgba(255,255,255,0.02);">
+                  <span style="font-weight:800; text-align:left;">Serat Alami</span>
+                  <span style="color:#F3B23E; font-weight:900;">16x Lebih Tinggi</span>
+                  <span style="color:rgba(255,255,255,0.6);">Rendah Serat</span>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:16px 24px; border-top:1px solid #1C4834; text-align:center;">
+                  <span style="font-weight:800; text-align:left;">Indeks Glikemik</span>
+                  <span style="color:#A3D99B; font-weight:900;">Rendah (Low GI)</span>
+                  <span style="color:rgba(255,255,255,0.6);">Tinggi Glikemik</span>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; padding:16px 24px; border-top:1px solid #1C4834; text-align:center; background:rgba(255,255,255,0.02);">
+                  <span style="font-weight:800; text-align:left;">Bahan Kimia</span>
+                  <span style="color:#A3D99B; font-weight:900;">0% (Alami Murni)</span>
+                  <span style="color:rgba(255,255,255,0.6);">Kerap Berpengawet</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Footer -->
+          <div style="display:flex; align-items:center; justify-content:space-between; height:50px; border-top:1px solid rgba(255,255,255,0.12); font-size:18px; color:rgba(255,255,255,0.6);">
+            <span>Solusi Pangan Masa Depan Indonesia Bebas Diabetes</span>
+            <span style="font-weight:900; color:#F3B23E;">MIE RESHIK CAP DOKAR • PILIHAN HIDUP SEHAT</span>
+          </div>
+        </div>
+  </div>
+</body>
+</html>

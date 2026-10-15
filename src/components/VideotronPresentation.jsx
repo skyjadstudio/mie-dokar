@@ -806,32 +806,23 @@ export default function VideotronPresentation({ onClose }) {
                     Terbuka kesempatan menjadi <strong>Mitra Kuliner (Warung/Resto)</strong>, <strong>Reseller Kemasan</strong>, maupun <strong>Distributor Area</strong> dengan keuntungan maksimal dan pasokan stabil langsung tangan pertama dari pabrik.
                   </p>
 
-                  <div className="p-8 rounded-[28px] bg-[#143727] border-2 border-[#29684C] flex flex-col gap-4">
-                    <div className="flex items-center gap-5">
-                      <span className="w-13 h-13 rounded-full bg-[#A3D99B] text-[#0A1F16] flex items-center justify-center font-black shrink-0 p-3">
-                        <Phone className="w-7 h-7" />
+                  <div className="p-10 rounded-[28px] bg-[#143727] border-2 border-[#29684C] flex flex-col gap-8">
+                    <div className="flex items-center gap-6">
+                      <span className="w-15 h-15 rounded-full bg-[#A3D99B] text-[#0A1F16] flex items-center justify-center font-black shrink-0 p-3.5">
+                        <Phone className="w-8 h-8" />
                       </span>
                       <div>
-                        <div className="text-sm font-bold text-[#A3D99B]">WhatsApp Sales & Kemitraan:</div>
-                        <div className="text-[26px] font-black text-white">{BRAND_INFO.contacts.wa1Display} / {BRAND_INFO.contacts.wa2Display}</div>
+                        <div className="text-base font-bold text-[#A3D99B] mb-1">WhatsApp Sales & Kemitraan:</div>
+                        <div className="text-[30px] font-black text-white tracking-wide">{BRAND_INFO.contacts.wa1Display} / {BRAND_INFO.contacts.wa2Display}</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-5">
-                      <span className="w-13 h-13 rounded-full bg-[#A3D99B] text-[#0A1F16] flex items-center justify-center font-black shrink-0 p-3">
-                        <Sparkles className="w-7 h-7" />
+                    <div className="flex items-center gap-6">
+                      <span className="w-15 h-15 rounded-full bg-[#A3D99B] text-[#0A1F16] flex items-center justify-center font-black shrink-0 p-3.5">
+                        <MapPin className="w-8 h-8" />
                       </span>
                       <div>
-                        <div className="text-sm font-bold text-[#A3D99B]">Layanan & Bimbingan Usaha:</div>
-                        <div className="text-[22px] font-black text-white">Konsultasi Usaha Kuliner & Resep Gratis</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-5">
-                      <span className="w-13 h-13 rounded-full bg-[#A3D99B] text-[#0A1F16] flex items-center justify-center font-black shrink-0 p-3">
-                        <MapPin className="w-7 h-7" />
-                      </span>
-                      <div>
-                        <div className="text-sm font-bold text-[#A3D99B]">Lokasi Pabrik:</div>
-                        <div className="text-[20px] font-bold text-white">{BRAND_INFO.location}</div>
+                        <div className="text-base font-bold text-[#A3D99B] mb-1">Lokasi Pabrik:</div>
+                        <div className="text-[22px] font-bold text-white leading-snug">{BRAND_INFO.location}</div>
                       </div>
                     </div>
                   </div>
