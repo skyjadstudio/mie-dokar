@@ -82,6 +82,17 @@ export default function Footer({ onOpenContact, onNavigate }) {
                   Sertifikasi & Legalitas
                 </button>
               </li>
+              <li className="pt-1 border-t border-[#2D5A49]/50">
+                <a 
+                  href="videotron.html" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-1.5 text-[#F3B23E] hover:text-[#FFD782] font-extrabold transition-colors"
+                >
+                  <span>📺</span>
+                  <span>Slide Videotron (16:9)</span>
+                </a>
+              </li>
             </ul>
           </div>
 

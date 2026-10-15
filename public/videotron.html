@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide Videotron - Mie Reshik Cap Dokar (8 Slide 16:9)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      user-select: none;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0A1A13;
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+    }
+
+    .font-serif-brand {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* 16:9 Aspect Ratio Container */
+    .aspect-16-9-screen {
+      aspect-ratio: 16 / 9;
+      width: 100vw;
+      max-height: 100vh;
+      max-width: 177.78vh;
+    }
+
+    .slide {
+      display: none;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Shimmer & Glow Effects for LED screens */
+    .led-glow-green {
+      text-shadow: 0 0 25px rgba(163, 217, 155, 0.45);
+    }
+
+    .led-glow-gold {
+      text-shadow: 0 0 25px rgba(243, 178, 62, 0.45);
+    }
+
+    .border-glow {
+      box-shadow: 0 0 35px rgba(163, 217, 155, 0.2), inset 0 0 20px rgba(163, 217, 155, 0.08);
+    }
+
+    /* Progress bar smooth transition */
+    .progress-bar-fill {
+      transition: width 0.1s linear;
+    }
+  </style>
+</head>
+<body class="w-screen h-screen flex flex-col items-center justify-center bg-[#07130E]">
+
+  <!-- Top Controller Bar (Hidden in Clean Fullscreen / Auto-fade) -->
+  <header id="top-bar" class="w-full max-w-7xl px-4 py-2 flex items-center justify-between text-xs text-[#A3D99B]/80 z-30 transition-opacity duration-300">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 font-black tracking-wider text-white">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#A3D99B] animate-ping"></span>
+        <span class="text-sm uppercase tracking-widest text-[#A3D99B]">VIDEOTRON DECK 16:9</span>
+      </div>
+      <span class="text-white/40">|</span>
+      <span>MIE RESHIK CAP DOKAR</span>
+      <span class="text-white/40">|</span>
+      <span id="slide-indicator" class="font-bold text-white bg-white/10 px-2 py-0.5 rounded">Slide 1 / 8</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <!-- Speed selector -->
+      <label class="text-[11px] text-white/60">Durasi:</label>
+      <select id="duration-select" onchange="changeDuration(this.value)" class="bg-[#143224] text-[#A3D99B] text-xs font-bold px-2 py-1 rounded border border-[#23553E] focus:outline-none">
+        <option value="5000">5 Detik</option>
+        <option value="7000" selected>7 Detik (Standar LED)</option>
+        <option value="10000">10 Detik</option>
+        <option value="15000">15 Detik</option>
+      </select>
+
+      <!-- Play / Pause Button -->
+      <button id="play-pause-btn" onclick="toggleAutoPlay()" class="px-3 py-1 rounded bg-[#143224] hover:bg-[#1E4A35] text-white font-bold border border-[#23553E] flex items-center gap-1.5 transition">
+        <span id="play-icon">⏸ Jeda</span>
+      </button>
+
+      <!-- Prev / Next Button -->
+      <button onclick="prevSlide()" class="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-bold transition">◀</button>
+      <button onclick="nextSlide()" class="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-bold transition">▶</button>
+
+      <!-- Fullscreen Button -->
+      <button onclick="toggleFullscreen()" class="px-3 py-1 rounded bg-[#A3D99B] hover:bg-[#B5E5AD] text-[#0A1A13] font-black flex items-center gap-1 transition shadow-md">
+        <span>⛶ Layar Penuh</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Progress Bar for Videotron Timing -->
+  <div class="w-full max-w-7xl h-1 bg-white/10 overflow-hidden rounded-full mb-1">
+    <div id="slide-progress" class="h-full bg-gradient-to-r from-[#A3D99B] via-[#F3B23E] to-[#A3D99B] w-0 progress-bar-fill"></div>
+  </div>
+
+  <!-- MAIN 16:9 VIDEOTRON STAGE -->
+  <main id="videotron-stage" class="aspect-16-9-screen relative overflow-hidden bg-gradient-to-br from-[#0B2117] via-[#102D20] to-[#081811] border-2 border-[#1E4A35] rounded-2xl shadow-2xl flex flex-col justify-between">
+    
+    <!-- Ambient Backdrop Decorative Elements -->
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-[#A3D99B]/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-[#F3B23E]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- ==================== SLIDE 1: BRAND IDENTITY (THE HOOK) ==================== -->
+    <div class="slide active w-full h-full p-8 md:p-14 flex flex-col justify-between relative z-10" data-index="1">
+      <!-- Slide Top Badge -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A3D99B]/20 border border-[#A3D99B]/40 text-[#A3D99B] text-sm md:text-base font-extrabold tracking-wide">
+          <span>🌿</span>
+          <span>PELOPOR MIE SINGKONG SEHAT SEJAK 2014</span>
+        </div>
+        <div class="text-right text-xs md:text-sm font-bold text-[#A3D99B]/80 tracking-widest uppercase">
+          KARYA FX. SUBENO • ASLI INDONESIA
+        </div>
+      </div>
+
+      <!-- Slide Main Hero Body -->
+      <div class="grid grid-cols-12 gap-8 items-center my-auto">
+        <div class="col-span-7 space-y-4">
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-none text-white font-serif-brand">
+            MIE RESHIK<br/>
+            <span class="text-[#A3D99B] led-glow-green">CAP DOKAR</span>
+          </h1>
+          <p class="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#F3B23E] led-glow-gold">
+            Makanan Sehat untuk Harimu
+          </p>
+          <p class="text-base md:text-xl text-[#D0E2CE] font-normal leading-relaxed max-w-xl">
+            Mie sehat alami berbahan <strong>singkong asli nusantara</strong>. 100% bebas gluten, rendah gula, dan diproses semi-modern tanpa bahan kimia apapun.
+          </p>
+
+          <!-- 3 Pillars Pill -->
+          <div class="flex flex-wrap gap-3 pt-3">
+            <span class="px-4 py-2 rounded-xl bg-[#173C2C] border border-[#2B6149] text-white text-xs md:text-sm font-extrabold flex items-center gap-2 shadow-sm">
+              <span class="text-[#A3D99B]">✔</span> 100% Bebas Gluten
+            </span>
+            <span class="px-4 py-2 rounded-xl bg-[#173C2C] border border-[#2B6149] text-white text-xs md:text-sm font-extrabold flex items-center gap-2 shadow-sm">
+              <span class="text-[#A3D99B]">✔</span> 16x Lebih Kaya Serat
+            </span>
+            <span class="px-4 py-2 rounded-xl bg-[#173C2C] border border-[#2B6149] text-white text-xs md:text-sm font-extrabold flex items-center gap-2 shadow-sm">
+              <span class="text-[#A3D99B]">✔</span> 0% Pewarna & Pengawet
+            </span>
+          </div>
+        </div>
+
+        <!-- Visual Hero Showcase -->
+        <div class="col-span-5 flex justify-center items-center relative">
+          <div class="w-64 md:w-80 h-64 md:h-80 rounded-3xl bg-gradient-to-tr from-[#163829] to-[#255741] border-2 border-[#A3D99B]/50 p-4 shadow-2xl relative flex flex-col items-center justify-center text-center overflow-hidden border-glow">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#A3D99B]/20 rounded-full blur-xl"></div>
+            <img src="images/hero_food_plate.png" alt="Mie Reshik Dokar" class="w-48 md:w-60 h-48 md:h-60 object-contain drop-shadow-2xl animate-pulse" onerror="this.src='images/dokar_logo_official.png'"/>
+            <div class="absolute bottom-3 left-4 right-4 bg-[#0E261C]/90 backdrop-blur-md py-1.5 px-3 rounded-xl border border-[#A3D99B]/30 text-[11px] md:text-xs text-[#A3D99B] font-black">
+              Sensasi Kenyal Alami • Bukan Terigu
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Bottom Footer -->
+      <div class="flex items-center justify-between text-xs md:text-sm text-white/60 border-t border-white/10 pt-3">
+        <span>📍 Pabrik: Poncosari, Srandakan, Bantul, D.I. Yogyakarta</span>
+        <span class="font-bold text-[#A3D99B]">skyjadstudio.github.io/mie-dokar</span>
+      </div>
+    </div>
+
+    <!-- ==================== SLIDE 2: MENGAPA SINGKONG? (REVOLUSI SEHAT) ==================== -->
+    <div class="slide w-full h-full p-8 md:p-14 flex flex-col justify-between relative z-10" data-index="2">
+      <!-- Top Header -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F3B23E]/20 border border-[#F3B23E]/40 text-[#F3B23E] text-sm md:text-base font-extrabold">
+          <span>⚡ REVOLUSI SEHAT</span>
+          <span>SINGKONG VS TEPUNG TERIGU</span>
+        </div>
+        <div class="text-right text-xs md:text-sm font-bold text-[#A3D99B]">
+          SOLUSI DIET & GAYA HIDUP SEHAT
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="grid grid-cols-12 gap-6 items-center my-auto">
+        <div class="col-span-12 lg:col-span-5 space-y-4">
+          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight font-serif-brand">
+            Bukan Terigu, Tapi <span class="text-[#A3D99B]">Singkong Asli</span> Pilihan!
+          </h2>
+          <p class="text-sm md:text-base text-[#D0E2CE] leading-relaxed">
+            Tingginya konsumsi terigu berisiko memicu diabetes dan gangguan metabolik. Mie Dokar hadir sebagai karbohidrat kompleks alami pengganti mie instan terigu biasa.
+          </p>
+          <div class="p-4 rounded-2xl bg-[#143526] border border-[#285A43] flex items-center gap-4">
+            <div class="text-3xl md:text-5xl font-black text-[#F3B23E] font-serif-brand leading-none">16x</div>
+            <div class="text-xs md:text-sm font-bold text-[#E5F5E2]">
+              Lebih kaya serat alami dibanding mie terigu konvensional!
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-12 lg:col-span-7 grid grid-cols-3 gap-3 md:gap-4">
+          <!-- Card 1 -->
+          <div class="p-4 md:p-5 rounded-2xl bg-[#163B2C] border-2 border-[#2F6D52] space-y-2 flex flex-col justify-between">
+            <div class="w-10 h-10 rounded-xl bg-[#A3D99B]/20 text-[#A3D99B] flex items-center justify-center text-xl font-black">
+              🌾
+            </div>
+            <div>
+              <h3 class="text-sm md:text-base font-black text-white">100% Bebas Gluten</h3>
+              <p class="text-xs text-[#C5DFC3] mt-1">Aman untuk lambung penderita maag, GERD, celiac & autoimun.</p>
+            </div>
+            <span class="text-[10px] font-bold text-[#A3D99B] bg-[#0E261C] px-2 py-1 rounded inline-block">Bebas Begah</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="p-4 md:p-5 rounded-2xl bg-[#163B2C] border-2 border-[#2F6D52] space-y-2 flex flex-col justify-between">
+            <div class="w-10 h-10 rounded-xl bg-[#F3B23E]/20 text-[#F3B23E] flex items-center justify-center text-xl font-black">
+              🩸
+            </div>
+            <div>
+              <h3 class="text-sm md:text-base font-black text-white">Rendah Gula (Low GI)</h3>
+              <p class="text-xs text-[#C5DFC3] mt-1">Tidak memicu lonjakan gula darah mendadak, sangat aman untuk diabetes.</p>
+            </div>
+            <span class="text-[10px] font-bold text-[#F3B23E] bg-[#0E261C] px-2 py-1 rounded inline-block">Ramah Diabetes</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="p-4 md:p-5 rounded-2xl bg-[#163B2C] border-2 border-[#2F6D52] space-y-2 flex flex-col justify-between">
+            <div class="w-10 h-10 rounded-xl bg-[#A3D99B]/20 text-[#A3D99B] flex items-center justify-center text-xl font-black">
+              ⚖️
+            </div>
+            <div>
+              <h3 class="text-sm md:text-base font-black text-white">Kenyang Lebih Lama</h3>
+              <p class="text-xs text-[#C5DFC3] mt-1">Serat padat singkong menjaga energi stabil seharian tanpa kantuk.</p>
+            </div>
+            <span class="text-[10px] font-bold text-[#A3D99B] bg-[#0E261C] px-2 py-1 rounded inline-block">Diet Optimal</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Bottom -->
+      <div class="flex items-center justify-between text-xs md:text-sm text-white/60 border-t border-white/10 pt-3">
+        <span>Kaya Nutrisi Nabati Asli Tanah Indonesia</span>
+        <span class="font-bold text-[#F3B23E]">MIE SEHAT PILIHAN GENERASI BARU</span>
+      </div>
+    </div>
+
+    <!-- ==================== SLIDE 3: HIGIENITAS & STANDAR PABRIK ==================== -->
+    <div class="slide w-full h-full p-8 md:p-14 flex flex-col justify-between relative z-10" data-index="3">
+      <!-- Top Header -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A3D99B]/20 border border-[#A3D99B]/40 text-[#A3D99B] text-sm md:text-base font-extrabold">
+          <span>⚙️ STANDAR PABRIK MODERN</span>
+          <span>100% HIGIENIS & FOOD GRADE</span>
+        </div>
+        <div class="text-right text-xs md:text-sm font-bold text-white/80">
+          TIDAK MENGGUNAKAN TENAGA HEWAN
+        </div>
+      </div>
+
+      <!-- Main Body -->
+      <div class="grid grid-cols-12 gap-8 items-center my-auto">
+        <div class="col-span-6 space-y-4">
+          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight font-serif-brand">
+            Mesin Stainless Steel <span class="text-[#A3D99B]">304 Food Grade</span>
+          </h2>
+          <p class="text-sm md:text-base text-[#D0E2CE] leading-relaxed">
+            Berbeda dengan produsen tradisional lainnya, Mie Reshik Cap Dokar diproses secara <strong>semi-modern</strong> menggunakan mesin baja tahan karat berstandar pangan tertinggi.
+          </p>
+
+          <div class="space-y-2.5 pt-2">
+            <div class="flex items-center gap-3 text-sm md:text-base font-bold text-white">
+              <span class="w-6 h-6 rounded-full bg-[#A3D99B] text-[#0A1A13] flex items-center justify-center font-black text-xs">✓</span>
+              <span>100% Higienis Tanpa Tenaga Hewan / Sapi</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm md:text-base font-bold text-white">
+              <span class="w-6 h-6 rounded-full bg-[#A3D99B] text-[#0A1A13] flex items-center justify-center font-black text-xs">✓</span>
+              <span>Pengeringan Sinar Matahari Alami untuk Kekenyalan Sempurna</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm md:text-base font-bold text-white">
+              <span class="w-6 h-6 rounded-full bg-[#A3D99B] text-[#0A1A13] flex items-center justify-center font-black text-xs">✓</span>
+              <span>Teruji Laboratorium UGM & Pengawasan Air Puskesmas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Badges Grid -->
+        <div class="col-span-6 grid grid-cols-2 gap-4">
+          <div class="p-5 rounded-2xl bg-[#143526] border border-[#285A43] text-center space-y-1">
+            <div class="text-3xl font-black text-[#A3D99B]">0%</div>
+            <div class="text-sm font-extrabold text-white">Pengawet Kimia</div>
+            <div class="text-[11px] text-[#A3D99B]/80">Tahan 12 bulan alami berkat kadar air rendah</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#143526] border border-[#285A43] text-center space-y-1">
+            <div class="text-3xl font-black text-[#A3D99B]">0%</div>
+            <div class="text-sm font-extrabold text-white">Pewarna Sintetik</div>
+            <div class="text-[11px] text-[#A3D99B]/80">Warna coklat bening khas pati singkong alami</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#143526] border border-[#285A43] text-center space-y-1">
+            <div class="text-3xl font-black text-[#A3D99B]">0%</div>
+            <div class="text-sm font-extrabold text-white">Pengenyal Buatan</div>
+            <div class="text-[11px] text-[#A3D99B]/80">Tekstur kenyal asli dari gelatinisasi tapioka</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#143526] border border-[#285A43] text-center space-y-1">
+            <div class="text-3xl font-black text-[#F3B23E]">2.5 Ton</div>
+            <div class="text-sm font-extrabold text-white">Kapasitas Produksi</div>
+            <div class="text-[11px] text-[#F3B23E]/80">Per siklus produksi siap suplai rutin</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Bottom -->
+      <div class="flex items-center justify-between text-xs md:text-sm text-white/60 border-t border-white/10 pt-3">
+        <span>Keamanan Pangan Terjamin untuk Konsumen & Industri</span>
+        <span class="font-bold text-[#A3D99B]">MIE RESHIK = MIE BERSIH & BERMUTU</span>
+      </div>
+    </div>
+
+    <!-- ==================== SLIDE 4: VARIAN RETAIL (DISERTAI BUMBU) ==================== -->
+    <div class="slide w-full h-full p-8 md:p-14 flex flex-col justify-between relative z-10" data-index="4">
+      <!-- Top Header -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A3D99B]/20 border border-[#A3D99B]/40 text-[#A3D99B] text-sm md:text-base font-extrabold">
+          <span>🍜 KEMASAN RETAIL</span>
+          <span>PRAKTIS DISERTAI BUMBU ALAMI</span>
+        </div>
+        <div class="text-right text-xs md:text-sm font-bold text-[#F3B23E]">
+          SANTAPAN SEHAT KELUARGA DI RUMAH
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="grid grid-cols-12 gap-8 items-center my-auto">
+        <div class="col-span-7 space-y-4">
+          <div class="inline-block px-3 py-1 rounded-full bg-[#F3B23E] text-[#0A1A13] text-xs font-black">
+            KEMASAN 250 GRAM • 3-4 PORSI KENYANG
+          </div>
+          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight font-serif-brand">
+            Mie Singkong Retail <br/>
+            <span class="text-[#A3D99B]">(Disertai Bumbu)</span>
+          </h2>
+          <p class="text-sm md:text-base text-[#D0E2CE] leading-relaxed">
+            Kini memasak mie sehat di rumah jadi semudah mie instan! Dilengkapi bumbu rempah alami gurih nikmat tanpa perlu repot meracik sendiri.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <div class="p-3.5 rounded-xl bg-[#143526] border border-[#285A43]">
+              <div class="font-black text-white text-sm">Disertai Bumbu Alami</div>
+              <div class="text-xs text-[#A3D99B] mt-0.5">Gurih pas & aman tanpa MSG berlebih</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-[#143526] border border-[#285A43]">
+              <div class="font-black text-white text-sm">Kemasan Rapi & Higienis</div>
+              <div class="text-xs text-[#A3D99B] mt-0.5">Sablon eksklusif, tersegel rapat & awet</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-[#143526] border border-[#285A43]">
+              <div class="font-black text-white text-sm">Disukai Anak-Anak</div>
+              <div class="text-xs text-[#A3D99B] mt-0.5">Tekstur kenyal lembut mudah dicerna</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-[#143526] border border-[#285A43]">
+              <div class="font-black text-white text-sm">Aneka Menu Lezat</div>
+              <div class="text-xs text-[#A3D99B] mt-0.5">Sempurna untuk Mie Goreng & Mie Kuah</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-5 flex justify-center">
+          <div class="p-6 rounded-3xl bg-gradient-to-b from-[#173F2D] to-[#0E271C] border-2 border-[#A3D99B]/40 text-center space-y-3 shadow-2xl border-glow">
+            <img src="images/hero_food_plate.png" alt="Retail Pack" class="w-48 h-48 mx-auto object-contain drop-shadow-xl" onerror="this.src='images/dokar_logo_official.png'"/>
+            <div class="text-base font-black text-white">Varian Retail 250gr</div>
+            <div class="text-xs text-[#A3D99B] font-semibold">Tersedia di Toko Organik, Oleh-Oleh & Online Store</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Bottom -->
+      <div class="flex items-center justify-between text-xs md:text-sm text-white/60 border-t border-white/10 pt-3">
+        <span>Solusi Praktis Hidup Sehat Tanpa Kompromi Rasa</span>
+        <span class="font-bold text-[#A3D99B]">TERSEDIA HARGA KHUSUS DISPLAY TOKO</span>
+      </div>
+    </div>
+
+    <!-- ==================== SLIDE 5: VARIAN LOSSPACK 5KG (SOLUSI KULINER) ==================== -->
+    <div class="slide w-full h-full p-8 md:p-14 flex flex-col justify-between relative z-10" data-index="5">
+      <!-- Top Header -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F3B23E]/20 border border-[#F3B23E]/40 text-[#F3B23E] text-sm md:text-base font-extrabold">
+          <span>🥘 VARIAN HOREKA & WARUNG BAKMI</span>
+          <span>KEMASAN BAL 5 KG</span>
+        </div>
+        <div class="text-right text-xs md:text-sm font-bold text-[#A3D99B]">
+          SOLUSI CUAN USAHA KULINER
+        </div>
+      </div>
+
+      <!-- Main Body -->
+      <div class="grid grid-cols-12 gap-8 items-center my-auto">
+        <div class="col-span-7 space-y-4">
+          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight font-serif-brand">
+            Losspack 5 Kg: Rahasia Dapur <span class="text-[#A3D99B]">Kenyal & Laba Tebal</span>
+          </h2>
+          <p class="text-sm md:text-base text-[#D0E2CE] leading-relaxed">
+            Dikhususkan untuk pengusaha warung bakmi Jawa, resto, kedai mie modern, katering, hingga hotel. <strong>Kenyal alami, tahan banting, dan tidak mudah lodoh</strong> di wajan panas.
+          </p>
+
+          <!-- Profit Highlights -->
+          <div class="grid grid-cols-3 gap-3 pt-2">
+            <div class="p-4 rounded-2xl bg-[#173E2E] border border-[#2E684E] text-center">
+              <div class="text-2xl md:text-3xl font-black text-[#A3D99B]">± 100</div>
+              <div class="text-xs font-bold text-white mt-1">Porsi per Bal</div>
+              <div class="text-[10px] text-[#A3D99B]/80">Sangat hemat modal</div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#173E2E] border border-[#2E684E] text-center">
+              <div class="text-2xl md:text-3xl font-black text-[#F3B23E]">60%+</div>
+              <div class="text-xs font-bold text-white mt-1">Potensi Margin</div>
+              <div class="text-[10px] text-[#F3B23E]/80">Laba kuliner tinggi</div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#173E2E] border border-[#2E684E] text-center">
+              <div class="text-2xl md:text-3xl font-black text-white">0%</div>
+              <div class="text-xs font-bold text-white mt-1">Risiko Lodoh</div>
+              <div class="text-[10px] text-white/80">Kuat saat dimasak</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Losspack Card -->
+        <div class="col-span-5 flex justify-center">
+          <div class="w-full max-w-sm p-6 rounded-3xl bg-[#133325] border-2 border-[#A3D99B] space-y-3 shadow-2xl border-glow">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2">
+              <span class="text-xs font-bold text-[#A3D99B]">Spesifikasi Bisnis</span>
+              <span class="text-xs font-black text-[#F3B23E] bg-[#F3B23E]/10 px-2.5 py-0.5 rounded">Bal 5 Kg</span>
+            </div>
+            <ul class="text-xs md:text-sm space-y-2 text-[#E2EFE0]">
+              <li class="flex items-center gap-2"><span>✔</span> <strong>Bentuk:</strong> Untaian mie singkong padat kering</li>
+              <li class="flex items-center gap-2"><span>✔</span> <strong>Masa Simpan:</strong> 12 Bulan suhu ruang kering</li>
+              <li class="flex items-center gap-2"><span>✔</span> <strong>Suplai:</strong> Langsung dari pabrik tangan pertama</li>
+              <li class="flex items-center gap-2"><span>✔</span> <strong>Bimbingan Masak:</strong> Edukasi resep & takaran gratis</li>
+            </ul>
+            <div class="p-2.5 rounded-xl bg-[#0A1F16] text-center text-xs text-[#A3D99B] font-extrabold">
+              Harga Pabrik Grosir Khusus Mitra Kuliner
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Bottom -->
+      <div class="flex items-center justify-between text-xs md:text-sm text-white/60 border-t border-white/10 pt-3">
+        <span>Cocok untuk Bakmi Goreng, Bakmi Godhog, Bakso & Ramen Sehat</span>
+        <span class="font-bold text-[#A3D99B]">MINTA SAMPLE & PENAWARAN GROSIR</span>
+      </div>
+    </div>
+
+    <!-- ==================== SLIDE 6: DIPERCAYA MITRA & BRAND TERNAMA ==================== -->
+    <div class="slide w-full h-full p-8 md:p-14 flex flex-col justify-between relative z-10" data-index="6">
+      <!-- Top Header -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A3D99B]/20 border border-[#A3D99B]/40 text-[#A3D99B] text-sm md:text-base font-extrabold">
+          <span>🤝 PORTOFOLIO & REPUTASI</span>
+          <span>DIPERCAYA INDUSTRI BINTANG</span>
+        </div>
+        <div class="text-right text-xs md:text-sm font-bold text-white/80">
+          KUALITAS STANDAR NASIONAL
+        </div>
+      </div>
+
+      <!-- Main Body -->
+      <div class="space-y-6 my-auto">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl md:text-5xl font-black text-white font-serif-brand">
+            Dipercaya Oleh <span class="text-[#A3D99B]">Mitra Bergengsi</span>
+          </h2>
+          <p class="text-sm md:text-base text-[#D0E2CE]">
+            Kualitas higienis dan cita rasa istimewa Mie Dokar telah lolos kurasi ketat industri perhotelan bintang dan penyedia pangan organik nasional.
+          </p>
+        </div>
+
+        <!-- 3 Big Partner Cards -->
+        <div class="grid grid-cols-3 gap-5">
+          <!-- Novotel -->
+          <div class="p-6 rounded-3xl bg-[#143727] border-2 border-[#296549] text-center space-y-3 hover:border-[#A3D99B] transition">
+            <div class="text-2xl font-black text-white tracking-widest font-serif-brand">NOVOTEL</div>
+            <div class="text-xs text-[#F3B23E] font-bold">HOTELS & RESORTS</div>
+            <div class="text-xs text-[#C5DFC3] leading-relaxed">
+              Supplier tetap sejak <strong>2021</strong> untuk standar kuliner hotel berbintang internasional.
+            </div>
+            <span class="inline-block text-[10px] font-black text-[#A3D99B] bg-[#0E261C] px-3 py-1 rounded-full">
+              Hospitality Grade
+            </span>
+          </div>
+
+          <!-- Lingkar Organik -->
+          <div class="p-6 rounded-3xl bg-[#143727] border-2 border-[#296549] text-center space-y-3 hover:border-[#A3D99B] transition">
+            <div class="text-2xl font-black text-[#A3D99B] tracking-wide font-serif-brand">Lingkar Organik</div>
+            <div class="text-xs text-[#F3B23E] font-bold">PANGAN ALAMI NASIONAL</div>
+            <div class="text-xs text-[#C5DFC3] leading-relaxed">
+              Supplier terpercaya sejak <strong>2020</strong> untuk jaringan pangan sehat organik se-Indonesia.
+            </div>
+            <span class="inline-block text-[10px] font-black text-[#A3D99B] bg-[#0E261C] px-3 py-1 rounded-full">
+              Certified Organic Supply
+            </span>
+          </div>
+
+          <!-- Shopee & Reseller Hub -->
+          <div class="p-6 rounded-3xl bg-[#143727] border-2 border-[#296549] text-center space-y-3 hover:border-[#A3D99B] transition">
+            <div class="text-2xl font-black text-[#EE4D2D] tracking-wide">Shopee & E-Commerce</div>
+            <div class="text-xs text-[#F3B23E] font-bold">JARINGAN RESELLER NASIONAL</div>
+            <div class="text-xs text-[#C5DFC3] leading-relaxed">
+              Suplier bagi mitra repacking, reseller, dan ribuan ulasan bintang 5 dari pembeli online.
+            </div>
+            <span class="inline-block text-[10px] font-black text-[#A3D99B] bg-[#0E261C] px-3 py-1 rounded-full">
+              Rating 4.9+ di Marketplace
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Bottom -->
+      <div class="flex items-center justify-between text-xs md:text-sm text-white/60 border-t border-white/10 pt-3">
+        <span>Pengiriman Menjangkau Berbagai Kota di Seluruh Indonesia</span>
+        <span class="font-bold text-[#A3D99B]">TERBUKA JALUR DISTRIBUTOR DAERAH</span>
+      </div>
+    </div>
+
+    <!-- ==================== SLIDE 7: LEGALITAS & SERTIFIKASI RESMI ==================== -->
+    <div class="slide w-full h-full p-8 md:p-14 flex flex-col justify-between relative z-10" data-index="7">
+      <!-- Top Header -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A3D99B]/20 border border-[#A3D99B]/40 text-[#A3D99B] text-sm md:text-base font-extrabold">
+          <span>📜 LEGALITAS & INTEGRITAS</span>
+          <span>100% AMAN & RESMI TERDAFTAR</span>
+        </div>
+        <div class="text-right text-xs md:text-sm font-bold text-white/80">
+          KEPERCAYAAN ADALAH PRIORITAS
+        </div>
+      </div>
+
+      <!-- Main Body -->
+      <div class="grid grid-cols-12 gap-8 items-center my-auto">
+        <div class="col-span-5 space-y-4">
+          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight font-serif-brand">
+            Sertifikasi Lengkap & <span class="text-[#A3D99B]">Terverifikasi</span>
+          </h2>
+          <p class="text-sm md:text-base text-[#D0E2CE] leading-relaxed">
+            Mie Reshik Cap Dokar menjamin setiap kemasan yang beredar telah mengantongi izin resmi pemerintah, sertifikasi halal, dan perlindungan merek terdaftar.
+          </p>
+
+          <div class="p-4 rounded-2xl bg-[#143425] border border-[#275941] text-xs text-[#C8E4C4]">
+            <strong>Integritas Pendiri:</strong> Dirintis oleh FX. Subeno dengan komitmen menyejahterakan petani singkong lokal serta memajukan kedaulatan pangan sehat nusantara.
+          </div>
+        </div>
+
+        <div class="col-span-7 grid grid-cols-2 gap-4">
+          <!-- Halal Card -->
+          <div class="p-5 rounded-2xl bg-[#163B2C] border-2 border-[#2E6B4F] space-y-2">
+            <div class="text-2xl">🕌</div>
+            <div class="text-sm md:text-base font-black text-white">Sertifikat Halal Resmi</div>
+            <div class="text-xs font-mono text-[#A3D99B] bg-[#0E261C] p-1.5 rounded">
+              ID34110000559820922
+            </div>
+            <div class="text-[11px] text-[#C5DFC3]">Diterbitkan resmi oleh BPJPH Kementerian Agama RI</div>
+          </div>
+
+          <!-- NIB Card -->
+          <div class="p-5 rounded-2xl bg-[#163B2C] border-2 border-[#2E6B4F] space-y-2">
+            <div class="text-2xl">🏛️</div>
+            <div class="text-sm md:text-base font-black text-white">Nomor Induk Berusaha (NIB)</div>
+            <div class="text-xs font-mono text-[#A3D99B] bg-[#0E261C] p-1.5 rounded">
+              1205000111318
+            </div>
+            <div class="text-[11px] text-[#C5DFC3]">Perizinan resmi Kementerian Investasi / BKPM RI</div>
+          </div>
+
+          <!-- HAKI Card -->
+          <div class="p-5 rounded-2xl bg-[#163B2C] border-2 border-[#2E6B4F] space-y-2">
+            <div class="text-2xl">🛡️</div>
+            <div class="text-sm md:text-base font-black text-white">HAKI Merek Terdaftar</div>
+            <div class="text-xs font-mono text-[#A3D99B] bg-[#0E261C] p-1.5 rounded">
+              IDM000835742
+            </div>
+            <div class="text-[11px] text-[#C5DFC3]">Perlindungan resmi merek Kemenkumham hingga 2029</div>
+          </div>
+
+          <!-- Lab UGM Card -->
+          <div class="p-5 rounded-2xl bg-[#163B2C] border-2 border-[#2E6B4F] space-y-2">
+            <div class="text-2xl">🔬</div>
+            <div class="text-sm md:text-base font-black text-white">Uji Lab Terverifikasi</div>
+            <div class="text-xs font-mono text-[#F3B23E] bg-[#0E261C] p-1.5 rounded">
+              Lab Pangan UGM & Dinkes
+            </div>
+            <div class="text-[11px] text-[#C5DFC3]">Teruji higienis & rutin inspeksi air berkala Puskesmas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Bottom -->
+      <div class="flex items-center justify-between text-xs md:text-sm text-white/60 border-t border-white/10 pt-3">
+        <span>Menjamin Keamanan Pangan Bagi Pelanggan & Mitra Anda</span>
+        <span class="font-bold text-[#A3D99B]">100% AMAN DIKONSUMSI SETIAP HARI</span>
+      </div>
+    </div>
+
+    <!-- ==================== SLIDE 8: CALL TO ACTION & KEMITRAAN (CLOSING) ==================== -->
+    <div class="slide w-full h-full p-8 md:p-14 flex flex-col justify-between relative z-10" data-index="8">
+      <!-- Top Header -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A3D99B]/20 border border-[#A3D99B]/40 text-[#A3D99B] text-sm md:text-base font-extrabold">
+          <span>🤝 PELUANG KEMITRAAN BISNIS</span>
+          <span>LANGSUNG DARI PABRIK</span>
+        </div>
+        <div class="text-right text-xs md:text-sm font-bold text-[#F3B23E]">
+          KONSULTASI & ORDER TERBUKA
+        </div>
+      </div>
+
+      <!-- Main Body -->
+      <div class="grid grid-cols-12 gap-8 items-center my-auto">
+        <div class="col-span-7 space-y-4">
+          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight font-serif-brand">
+            Mari Tumbuh Bersama <br/>
+            <span class="text-[#A3D99B] led-glow-green">Mie Reshik Cap Dokar</span>
+          </h2>
+          <p class="text-sm md:text-base text-[#D0E2CE] leading-relaxed">
+            Terbuka kesempatan menjadi <strong>Mitra Kuliner (Warung/Resto)</strong>, <strong>Reseller Kemasan</strong>, maupun <strong>Distributor Area</strong> dengan keuntungan maksimal dan pasokan stabil.
+          </p>
+
+          <!-- Contact Details Card -->
+          <div class="p-5 rounded-2xl bg-[#143727] border-2 border-[#29684C] space-y-2.5">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-full bg-[#A3D99B] text-[#0A1A13] flex items-center justify-center font-black">📞</span>
+              <div>
+                <div class="text-xs text-[#A3D99B] font-bold">WhatsApp Sales & Kemitraan:</div>
+                <div class="text-base md:text-lg font-black text-white">0877 3904 0377 / 0857 4747 4121</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-full bg-[#A3D99B] text-[#0A1A13] flex items-center justify-center font-black">🌐</span>
+              <div>
+                <div class="text-xs text-[#A3D99B] font-bold">Kunjungi Website Resmi:</div>
+                <div class="text-base md:text-lg font-black text-white">skyjadstudio.github.io/mie-dokar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Big QR Code Card for Videotron Scanning -->
+        <div class="col-span-5 flex justify-center">
+          <div class="p-6 rounded-3xl bg-white text-[#0A1A13] text-center space-y-3 shadow-2xl border-4 border-[#A3D99B] border-glow">
+            <div class="text-xs md:text-sm font-black uppercase tracking-wider text-[#143727]">
+              SCAN UNTUK AKSES WEB RESMI
+            </div>
+            <img src="images/qr-code-mie-dokar.png" alt="QR Code Mie Dokar" class="w-44 md:w-52 h-44 md:h-52 mx-auto object-contain p-2 bg-white rounded-2xl border border-gray-200" onerror="this.src='images/qr-code-mie-dokar.svg'"/>
+            <div class="text-xs font-extrabold text-[#143727]">
+              Pabrik Mie Dokar • Bantul, D.I. Yogyakarta
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Bottom -->
+      <div class="flex items-center justify-between text-xs md:text-sm text-white/60 border-t border-white/10 pt-3">
+        <span>Mie Reshik Cap Dokar — Makanan Sehat untuk Harimu</span>
+        <span class="font-bold text-[#A3D99B]">AKTIFKAN MODE SEHATMU SEKARANG</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bottom Thumbnails Navigator -->
+  <nav id="thumb-bar" class="w-full max-w-7xl px-4 py-2.5 flex items-center justify-center gap-2 z-30 transition-opacity duration-300">
+    <button onclick="goToSlide(1)" class="thumb-btn px-3 py-1.5 rounded-lg bg-[#143526] border-2 border-[#A3D99B] text-white text-xs font-bold transition flex items-center gap-1.5" data-slide="1">
+      <span>1</span> <span class="hidden md:inline">Brand Intro</span>
+    </button>
+    <button onclick="goToSlide(2)" class="thumb-btn px-3 py-1.5 rounded-lg bg-[#143526] border border-[#23553E] text-white/70 text-xs font-bold transition flex items-center gap-1.5" data-slide="2">
+      <span>2</span> <span class="hidden md:inline">Mengapa Singkong</span>
+    </button>
+    <button onclick="goToSlide(3)" class="thumb-btn px-3 py-1.5 rounded-lg bg-[#143526] border border-[#23553E] text-white/70 text-xs font-bold transition flex items-center gap-1.5" data-slide="3">
+      <span>3</span> <span class="hidden md:inline">Standar Higienis</span>
+    </button>
+    <button onclick="goToSlide(4)" class="thumb-btn px-3 py-1.5 rounded-lg bg-[#143526] border border-[#23553E] text-white/70 text-xs font-bold transition flex items-center gap-1.5" data-slide="4">
+      <span>4</span> <span class="hidden md:inline">Varian Retail</span>
+    </button>
+    <button onclick="goToSlide(5)" class="thumb-btn px-3 py-1.5 rounded-lg bg-[#143526] border border-[#23553E] text-white/70 text-xs font-bold transition flex items-center gap-1.5" data-slide="5">
+      <span>5</span> <span class="hidden md:inline">Losspack 5Kg</span>
+    </button>
+    <button onclick="goToSlide(6)" class="thumb-btn px-3 py-1.5 rounded-lg bg-[#143526] border border-[#23553E] text-white/70 text-xs font-bold transition flex items-center gap-1.5" data-slide="6">
+      <span>6</span> <span class="hidden md:inline">Mitra Bintang</span>
+    </button>
+    <button onclick="goToSlide(7)" class="thumb-btn px-3 py-1.5 rounded-lg bg-[#143526] border border-[#23553E] text-white/70 text-xs font-bold transition flex items-center gap-1.5" data-slide="7">
+      <span>7</span> <span class="hidden md:inline">Legalitas Halal</span>
+    </button>
+    <button onclick="goToSlide(8)" class="thumb-btn px-3 py-1.5 rounded-lg bg-[#143526] border border-[#23553E] text-white/70 text-xs font-bold transition flex items-center gap-1.5" data-slide="8">
+      <span>8</span> <span class="hidden md:inline">Kemitraan & QR</span>
+    </button>
+  </nav>
+
+  <!-- Interactive Slide Engine Script -->
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+    let slideDuration = 7000; // 7 seconds default for Videotron
+    let isAutoPlaying = true;
+    let progressTimer = null;
+    let slideTimer = null;
+    let progressStart = 0;
+
+    const slides = document.querySelectorAll('.slide');
+    const thumbBtns = document.querySelectorAll('.thumb-btn');
+    const indicator = document.getElementById('slide-indicator');
+    const progressBar = document.getElementById('slide-progress');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const playIcon = document.getElementById('play-icon');
+
+    function updateSlideDisplay() {
+      slides.forEach((s, idx) => {
+        if (idx + 1 === currentSlide) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+
+      thumbBtns.forEach((b) => {
+        const slideNum = parseInt(b.getAttribute('data-slide'));
+        if (slideNum === currentSlide) {
+          b.classList.remove('border-[#23553E]', 'text-white/70');
+          b.classList.add('border-[#A3D99B]', 'text-white', 'bg-[#1E4A35]');
+        } else {
+          b.classList.add('border-[#23553E]', 'text-white/70');
+          b.classList.remove('border-[#A3D99B]', 'text-white', 'bg-[#1E4A35]');
+        }
+      });
+
+      if (indicator) {
+        indicator.textContent = `Slide ${currentSlide} / ${totalSlides}`;
+      }
+
+      resetProgress();
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      if (currentSlide > totalSlides) currentSlide = 1;
+      if (currentSlide < 1) currentSlide = totalSlides;
+      updateSlideDisplay();
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+
+    function resetProgress() {
+      if (progressTimer) clearInterval(progressTimer);
+      if (slideTimer) clearTimeout(slideTimer);
+      if (!isAutoPlaying) {
+        progressBar.style.width = '0%';
+        return;
+      }
+
+      progressBar.style.width = '0%';
+      progressStart = Date.now();
+
+      progressTimer = setInterval(() => {
+        const elapsed = Date.now() - progressStart;
+        const pct = Math.min(100, (elapsed / slideDuration) * 100);
+        progressBar.style.width = pct + '%';
+        if (pct >= 100) {
+          clearInterval(progressTimer);
+        }
+      }, 50);
+
+      slideTimer = setTimeout(() => {
+        nextSlide();
+      }, slideDuration);
+    }
+
+    function toggleAutoPlay() {
+      isAutoPlaying = !isAutoPlaying;
+      if (isAutoPlaying) {
+        playIcon.textContent = '⏸ Jeda';
+        resetProgress();
+      } else {
+        playIcon.textContent = '▶ Putar';
+        if (progressTimer) clearInterval(progressTimer);
+        if (slideTimer) clearTimeout(slideTimer);
+        progressBar.style.width = '0%';
+      }
+    }
+
+    function changeDuration(newVal) {
+      slideDuration = parseInt(newVal);
+      if (isAutoPlaying) {
+        resetProgress();
+      }
+    }
+
+    function toggleFullscreen() {
+      const stage = document.documentElement;
+      if (!document.fullscreenElement) {
+        stage.requestFullscreen().catch(err => {
+          alert(`Error saat masuk fullscreen: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // Keyboard Shortcuts (Arrow Left, Arrow Right, Spacebar for Pause)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      } else if (e.key === ' ') {
+        e.preventDefault();
+        toggleAutoPlay();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      }
+    });
+
+    // Start on load
+    updateSlideDisplay();
+  </script>
+</body>
+</html>
