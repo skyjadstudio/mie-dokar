@@ -118,16 +118,16 @@ export default function ProfitCalculator({ onOpenContact }) {
         </div>
 
         {/* Calculator Main Container */}
-        <div className="card-soft p-6 sm:p-10 bg-white border border-[#EADBCC] shadow-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="card-soft p-4 sm:p-8 lg:p-10 bg-white border border-[#EADBCC] shadow-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             
             {/* Left Column: Interactive Flexible Inputs */}
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
 
               {mode === 'kuliner' ? (
                 <>
                   {/* Slider 1: Target Porsi per Hari */}
-                  <div className="p-5 rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
+                  <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-[#1E3F33]">
                         1. Target Penjualan Menu per Hari
@@ -174,7 +174,7 @@ export default function ProfitCalculator({ onOpenContact }) {
                   </div>
 
                   {/* Input 2: Estimasi Harga Modal Beli per Bal (5Kg) */}
-                  <div className="p-5 rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
+                  <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-[#1E3F33]">
                         2. Estimasi Harga Modal Beli per Bal (5Kg)
@@ -223,7 +223,7 @@ export default function ProfitCalculator({ onOpenContact }) {
                   </div>
 
                   {/* Slider 3: Target Harga Jual Menu per Porsi */}
-                  <div className="p-5 rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
+                  <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-[#1E3F33]">
                         3. Rencana Harga Jual Menu Jadi
@@ -251,7 +251,7 @@ export default function ProfitCalculator({ onOpenContact }) {
               ) : (
                 <>
                   {/* Mode Reseller: Target Penjualan Bal per Bulan */}
-                  <div className="p-5 rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
+                  <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-[#1E3F33]">
                         1. Target Penjualan per Bulan
@@ -277,7 +277,7 @@ export default function ProfitCalculator({ onOpenContact }) {
                   </div>
 
                   {/* Mode Reseller: Estimasi Modal Beli per Bal */}
-                  <div className="p-5 rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
+                  <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-[#1E3F33]">
                         2. Estimasi Harga Beli Modal per Bal
@@ -311,7 +311,7 @@ export default function ProfitCalculator({ onOpenContact }) {
                   </div>
 
                   {/* Mode Reseller: Target Harga Jual ke Konsumen */}
-                  <div className="p-5 rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
+                  <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#FAF7F2] border border-[#ECE2D2] space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-[#1E3F33]">
                         3. Target Harga Jual ke Pelanggan / Konsumen
@@ -342,83 +342,87 @@ export default function ProfitCalculator({ onOpenContact }) {
             </div>
 
             {/* Right Column: Live Output Dashboard */}
-            <div className="lg:col-span-6 bg-[#1E3F33] text-white p-6 sm:p-8 rounded-3xl border border-[#2D5A49] shadow-inner space-y-5">
+            <div className="lg:col-span-6 bg-[#1E3F33] text-white p-4 sm:p-7 rounded-3xl border border-[#2D5A49] shadow-inner space-y-4 sm:space-y-5">
               
-              <div className="flex items-center justify-between border-b border-[#2D5A49] pb-3">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-[#A3D99B]" />
-                  <span className="font-extrabold text-sm sm:text-base text-white">
+              <div className="flex items-center justify-between border-b border-[#2D5A49] pb-3 gap-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <TrendingUp className="w-5 h-5 text-[#A3D99B] shrink-0" />
+                  <span className="font-extrabold text-sm sm:text-base text-white truncate">
                     Hasil Proyeksi Keuntungan
                   </span>
                 </div>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-[#A3D99B]/20 text-[#A3D99B] border border-[#A3D99B]/30">
+                <span className="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full bg-[#A3D99B]/20 text-[#A3D99B] border border-[#A3D99B]/30 shrink-0 text-center">
                   {mode === 'kuliner' ? 'Simulasi Usaha Kuliner' : 'Simulasi Reseller / Agen'}
                 </span>
               </div>
 
               {/* Big Highlight: Estimasi Keuntungan Bersih/Kotor */}
-              <div className="p-5 sm:p-6 rounded-3xl bg-[#234E3E] border border-[#2F6551] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#234E3E] border border-[#2F6551] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="min-w-0">
                   <div className="text-xs font-bold text-[#A3D99B] mb-1">
                     {mode === 'kuliner' ? 'Estimasi Laba Kotor per Bulan:' : 'Estimasi Keuntungan per Bulan:'}
                   </div>
-                  <div className="text-2xl sm:text-3xl font-black text-white font-display">
-                    {formatRp(currentProfit)}
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-white font-display tracking-tight flex flex-wrap items-baseline gap-1">
+                    <span>{formatRp(currentProfit)}</span>
                     <span className="text-xs font-normal text-[#A3D99B]/80"> / bulan</span>
                   </div>
                   {mode === 'kuliner' && (
-                    <div className="text-[11px] text-[#A3D99B]/90 mt-1 font-semibold">
+                    <div className="text-[11px] text-[#A3D99B]/90 mt-1 font-semibold leading-snug">
                       Modal bahan: {formatRp(calculatedCostPerPortion)} / porsi (±100 porsi / bal)
                     </div>
                   )}
                 </div>
-                <div>
+                <div className="shrink-0 self-start sm:self-auto">
                   <span className="inline-flex items-center gap-1 text-xs font-black text-[#1E3F33] bg-[#A3D99B] px-3.5 py-1.5 rounded-full shadow-sm">
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <Sparkles className="w-3.5 h-3.5 shrink-0" />
                     Margin {currentMargin}%
                   </span>
                 </div>
               </div>
 
               {/* 4 Stats Metrics Grid */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 
-                <div className="p-4 rounded-2xl bg-[#234E3E] border border-[#2F6551]">
-                  <div className="text-[11px] text-[#A3D99B] font-semibold mb-1">
+                <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#234E3E] border border-[#2F6551] flex flex-col justify-between overflow-hidden min-w-0">
+                  <div className="text-[10px] sm:text-xs text-[#A3D99B] font-semibold mb-1 leading-tight">
                     {mode === 'kuliner' ? 'Total Porsi per Bulan' : 'Volume Penjualan'}
                   </div>
-                  <div className="text-lg sm:text-xl font-extrabold text-white">
+                  <div className="text-[13px] sm:text-base lg:text-lg font-black text-white tracking-tight break-words">
                     {mode === 'kuliner' ? (
-                      <>± {totalMonthlyPortions.toLocaleString('id-ID')} <span className="text-xs font-medium text-[#A3D99B]/80">Porsi</span></>
+                      <>± {totalMonthlyPortions.toLocaleString('id-ID')} <span className="text-[10px] sm:text-xs font-semibold text-[#A3D99B]/80 block sm:inline">Porsi</span></>
                     ) : (
-                      <>{resellerMonthlyVolume} <span className="text-xs font-medium text-[#A3D99B]/80">Bal ({resellerMonthlyVolume * 5} Kg)</span></>
+                      <>{resellerMonthlyVolume} <span className="text-[10px] sm:text-xs font-semibold text-[#A3D99B]/80 block sm:inline">Bal ({resellerMonthlyVolume * 5} Kg)</span></>
                     )}
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#234E3E] border border-[#2F6551]">
-                  <div className="text-[11px] text-[#A3D99B] font-semibold mb-1">
+                <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#234E3E] border border-[#2F6551] flex flex-col justify-between overflow-hidden min-w-0">
+                  <div className="text-[10px] sm:text-xs text-[#A3D99B] font-semibold mb-1 leading-tight">
                     {mode === 'kuliner' ? 'Kebutuhan Bahan Baku' : 'Estimasi Laba per Bal'}
                   </div>
-                  <div className="text-lg sm:text-xl font-extrabold text-white">
+                  <div className="text-[13px] sm:text-base lg:text-lg font-black text-white tracking-tight break-words">
                     {mode === 'kuliner' ? (
-                      <>{estimatedPackages} <span className="text-xs font-medium text-[#A3D99B]/80">Bal ({estimatedKg} Kg)</span></>
+                      <>{estimatedPackages} <span className="text-[10px] sm:text-xs font-semibold text-[#A3D99B]/80 block sm:inline">Bal ({estimatedKg} Kg)</span></>
                     ) : (
                       <>{formatRp(resellerSellPrice - resellerBuyPrice)}</>
                     )}
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#234E3E] border border-[#2F6551]">
-                  <div className="text-[11px] text-[#A3D99B] font-semibold mb-1">Total Modal Pengadaan</div>
-                  <div className="text-lg sm:text-xl font-extrabold text-white">
+                <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#234E3E] border border-[#2F6551] flex flex-col justify-between overflow-hidden min-w-0">
+                  <div className="text-[10px] sm:text-xs text-[#A3D99B] font-semibold mb-1 leading-tight">
+                    Total Modal Pengadaan
+                  </div>
+                  <div className="text-[13px] sm:text-base lg:text-lg font-black text-white tracking-tight break-words">
                     {formatRp(currentCost)}
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#234E3E] border border-[#2F6551]">
-                  <div className="text-[11px] text-[#A3D99B] font-semibold mb-1">Potensi Omzet Penjualan</div>
-                  <div className="text-lg sm:text-xl font-extrabold text-[#A3D99B]">
+                <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#234E3E] border border-[#2F6551] flex flex-col justify-between overflow-hidden min-w-0">
+                  <div className="text-[10px] sm:text-xs text-[#A3D99B] font-semibold mb-1 leading-tight">
+                    Potensi Omzet Penjualan
+                  </div>
+                  <div className="text-[13px] sm:text-base lg:text-lg font-black text-[#A3D99B] tracking-tight break-words">
                     {formatRp(currentRevenue)}
                   </div>
                 </div>
@@ -428,10 +432,10 @@ export default function ProfitCalculator({ onOpenContact }) {
               {/* Action Button */}
               <button
                 onClick={handleConsultation}
-                className="w-full btn-curved btn-matcha-primary py-3.5 text-xs sm:text-sm font-extrabold shadow-lg flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform duration-300"
+                className="w-full btn-curved btn-matcha-primary px-3 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm font-extrabold shadow-lg flex items-center justify-center gap-1.5 sm:gap-2 hover:scale-[1.01] transition-transform duration-300 text-center leading-snug"
               >
                 <span>Konsultasi Simulasi & Minta Penawaran Harga</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </button>
 
             </div>
