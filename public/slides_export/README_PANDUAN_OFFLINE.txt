@@ -9,14 +9,14 @@ DAFTAR FILE:
    - slide_1.png (Brand Hook & Pelopor Mie Singkong Sejak 2014)
    - slide_2.png (Singkong Alami vs Terigu)
    - slide_3.png (Standar Produksi & Higienitas Pabrik)
-   - slide_4.png (Varian Kemasan Retail 120g & Ekspor)
+   - slide_4.png (Varian Kemasan Retail 250g)
    - slide_5.png (Kemasan Kuliner Losspack 5Kg untuk Resto/Warung)
    - slide_6.png (Portofolio Mitra Bintang: Novotel, Lingkar Organik, Shopee)
    - slide_7.png (Legalitas & Sertifikasi Resmi: Halal, NIB, Sertifikat HAKI)
    - slide_8.png (Peluang Kemitraan, WhatsApp Sales, Alamat Pabrik, Scan QR)
 
-2. DOKUMEN PDF (16:9 Presentation):
-   - videotron_mie_dokar_16_9.pdf (1 dokumen gabungan 8 slide beresolusi tinggi, rasio 16:9)
+2. DOKUMEN PDF (16:9 Full HD Presentation):
+   - videotron_mie_dokar_16_9.pdf (1 dokumen gabungan 8 slide beresolusi tinggi rasio 16:9 tanpa kotak bayangan)
 
 3. OFFLINE WEB PLAYER:
    - videotron_offline_player.html (Tinggal klik 2x / buka di Chrome/Edge/Safari, dilengkapi timer otomatis 7s, kontrol keyboard, dan tombol Fullscreen 'F').
