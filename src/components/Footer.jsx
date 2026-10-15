@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { BRAND_INFO, getAssetUrl } from '../data/productKnowledgeData';
 
-export default function Footer({ onOpenContact, onNavigate }) {
+export default function Footer({ onOpenContact, onNavigate, onOpenVideotron }) {
   return (
     <footer className="border-t border-[#2D5A49] bg-[#1E3F33] text-white pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,6 +80,15 @@ export default function Footer({ onOpenContact, onNavigate }) {
               <li>
                 <button onClick={() => onNavigate('legalitas')} className="hover:text-[#A3D99B] transition-colors">
                   Sertifikasi & Legalitas
+                </button>
+              </li>
+              <li className="pt-1 border-t border-[#2D5A49]/60">
+                <button 
+                  onClick={onOpenVideotron}
+                  className="inline-flex items-center gap-1.5 text-[#F3B23E] hover:text-[#FFD782] font-black transition-colors"
+                >
+                  <span>📺</span>
+                  <span>Slide Videotron (16:9)</span>
                 </button>
               </li>
             </ul>

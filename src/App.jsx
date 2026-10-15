@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import AboutAndVisionSection from './components/AboutAndVisionSection';
@@ -13,6 +13,7 @@ import CertificatesSection from './components/CertificatesSection';
 import Footer from './components/Footer';
 import ProductDetailModal from './components/ProductDetailModal';
 import ContactSalesModal from './components/ContactSalesModal';
+import VideotronPresentation from './components/VideotronPresentation';
 import { ArrowUp, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export default function App() {
@@ -20,6 +21,15 @@ export default function App() {
   const [healthyMode, setHealthyMode] = useState(true);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+  const [videotronOpen, setVideotronOpen] = useState(false);
+  
+  // Auto-open videotron mode if URL query or hash includes 'videotron'
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('videotron') === 'true' || window.location.hash.toLowerCase().includes('videotron')) {
+      setVideotronOpen(true);
+    }
+  }, []);
   
   // Modal states
   const [selectedProductForModal, setSelectedProductForModal] = useState(null);
@@ -74,6 +84,7 @@ export default function App() {
         onOpenContact={() => handleOpenContact('Konsultasi Produk Mie Reshik Cap Dokar')}
         healthyMode={healthyMode}
         setHealthyMode={toggleHealthyMode}
+        onOpenVideotron={() => setVideotronOpen(true)}
       />
 
       {/* Main Content Sections */}
@@ -127,6 +138,7 @@ export default function App() {
       <Footer
         onOpenContact={(subject) => handleOpenContact(subject)}
         onNavigate={handleNavigate}
+        onOpenVideotron={() => setVideotronOpen(true)}
       />
 
       {/* Floating Back to Top Button */}
@@ -151,6 +163,13 @@ export default function App() {
         <ContactSalesModal
           initialSubject={contactSubject}
           onClose={() => setContactModalOpen(false)}
+        />
+      )}
+
+      {/* Fullscreen 16:9 Videotron Mode */}
+      {videotronOpen && (
+        <VideotronPresentation
+          onClose={() => setVideotronOpen(false)}
         />
       )}
 

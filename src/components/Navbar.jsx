@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { BRAND_INFO, getAssetUrl } from '../data/productKnowledgeData';
 
-export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthyMode, setHealthyMode }) {
+export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthyMode, setHealthyMode, onOpenVideotron }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -117,6 +117,16 @@ export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthy
               )}
             </button>
 
+            {/* Mode Videotron Button */}
+            <button
+              onClick={onOpenVideotron}
+              className="hidden lg:inline-flex btn-curved bg-[#143526] hover:bg-[#1E4A35] text-[#A3D99B] px-3 py-1.5 text-xs font-black shadow-md border border-[#2D654E] items-center gap-1.5 whitespace-nowrap transition-transform active:scale-95"
+              title="Buka Mode Videotron (16:9)"
+            >
+              <span>📺</span>
+              <span>Videotron 16:9</span>
+            </button>
+
             {/* Desktop Only CTA Hubungi Sales */}
             <button
               onClick={() => onOpenContact('Pemesanan & Kerjasama Mie Reshik Cap Dokar')}
@@ -182,6 +192,17 @@ export default function Navbar({ activeTab, setActiveTab, onOpenContact, healthy
               })}
             </div>
             
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (onOpenVideotron) onOpenVideotron();
+              }}
+              className="w-full btn-curved bg-[#143526] hover:bg-[#1E4A35] text-[#A3D99B] py-2.5 text-xs font-black flex items-center justify-center gap-2 border border-[#2D654E] mb-2 shadow-sm"
+            >
+              <span>📺</span>
+              <span>Buka Slide Videotron (16:9)</span>
+            </button>
+
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
