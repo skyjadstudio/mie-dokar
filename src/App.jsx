@@ -13,6 +13,7 @@ import CertificatesSection from './components/CertificatesSection';
 import Footer from './components/Footer';
 import ProductDetailModal from './components/ProductDetailModal';
 import ContactSalesModal from './components/ContactSalesModal';
+import QrCodeModal from './components/QrCodeModal';
 import { ArrowUp, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
   const [selectedProductForModal, setSelectedProductForModal] = useState(null);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [contactSubject, setContactSubject] = useState('');
+  const [qrModalOpen, setQrModalOpen] = useState(false);
 
   const toggleHealthyMode = (newVal) => {
     setHealthyMode(newVal);
@@ -74,6 +76,7 @@ export default function App() {
         onOpenContact={() => handleOpenContact('Konsultasi Produk Mie Reshik Cap Dokar')}
         healthyMode={healthyMode}
         setHealthyMode={toggleHealthyMode}
+        onOpenQrCode={() => setQrModalOpen(true)}
       />
 
       {/* Main Content Sections */}
@@ -127,6 +130,7 @@ export default function App() {
       <Footer
         onOpenContact={(subject) => handleOpenContact(subject)}
         onNavigate={handleNavigate}
+        onOpenQrCode={() => setQrModalOpen(true)}
       />
 
       {/* Floating Back to Top Button */}
@@ -151,6 +155,12 @@ export default function App() {
         <ContactSalesModal
           initialSubject={contactSubject}
           onClose={() => setContactModalOpen(false)}
+        />
+      )}
+
+      {qrModalOpen && (
+        <QrCodeModal
+          onClose={() => setQrModalOpen(false)}
         />
       )}
 

@@ -6,11 +6,12 @@ import {
   Mail, 
   Heart,
   ShieldCheck,
-  Award
+  Award,
+  QrCode
 } from 'lucide-react';
 import { BRAND_INFO, getAssetUrl } from '../data/productKnowledgeData';
 
-export default function Footer({ onOpenContact, onNavigate }) {
+export default function Footer({ onOpenContact, onNavigate, onOpenQrCode }) {
   return (
     <footer className="border-t border-[#2D5A49] bg-[#1E3F33] text-white pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,6 +49,30 @@ export default function Footer({ onOpenContact, onNavigate }) {
               <span className="badge-pill bg-[#7A9C78]/20 text-[#A3D99B] border border-[#7A9C78]/40 text-[11px]">
                 🌾 Serat 16x Lipat
               </span>
+            </div>
+
+            {/* Quick Barcode Scanner Card */}
+            <div 
+              onClick={onOpenQrCode}
+              className="mt-2 p-3 rounded-2xl bg-[#173127]/90 border border-[#2D5A49] hover:border-[#7A9C78] transition-all flex items-center gap-3 cursor-pointer group max-w-sm"
+              title="Klik untuk membuka & mengunduh barcode website"
+            >
+              <div className="w-12 h-12 bg-white p-1 rounded-xl shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                <img 
+                  src={getAssetUrl("images/qr-code-mie-dokar.png")} 
+                  alt="QR Code Website" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5 text-white font-bold text-xs group-hover:text-[#A3D99B] transition-colors">
+                  <QrCode className="w-3.5 h-3.5 text-[#A3D99B]" />
+                  <span>Barcode Website Resmi</span>
+                </div>
+                <p className="text-[10.5px] text-[#D0E2CE]/80 mt-0.5">
+                  Scan kamera HP atau unduh format PNG & SVG
+                </p>
+              </div>
             </div>
           </div>
 
