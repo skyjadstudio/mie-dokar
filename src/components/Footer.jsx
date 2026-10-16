@@ -105,7 +105,7 @@ export default function Footer({ onOpenContact, onNavigate, onOpenVideotron }) {
               <li>✓ Kualitas Air Cek Puskesmas</li>
               <li>✓ Mesin Stainless Steel 304</li>
               <li>✓ Tanpa Tenaga Hewan/Sapi</li>
-              <li>✓ Kapasitas 1.5 - 2.5 Ton</li>
+              <li>✓ Kapasitas 0.5 - 2 Ton</li>
             </ul>
           </div>
 

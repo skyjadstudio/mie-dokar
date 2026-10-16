@@ -448,7 +448,7 @@ export default function VideotronPresentation({ onClose }) {
                     <div className="text-[17px] text-[#A3D99B]">Kenyal alami gelatinisasi tapioka murni</div>
                   </div>
                   <div className="p-9 rounded-[28px] bg-[#143526] border-2 border-[#285A43] text-center flex flex-col gap-2.5">
-                    <div className="text-[60px] font-black text-[#F3B23E] leading-none">2.5 Ton</div>
+                    <div className="text-[52px] font-black text-[#F3B23E] leading-none">0.5 - 2 Ton</div>
                     <div className="text-[24px] font-black text-white">Kapasitas Suplai</div>
                     <div className="text-[17px] text-[#F3B23E]">Per siklus produksi siap kirim stabil</div>
                   </div>
@@ -588,7 +588,7 @@ export default function VideotronPresentation({ onClose }) {
 
               <div className="flex items-center justify-between h-[50px] border-t border-white/10 text-lg text-white/60">
                 <span>Pilihan Terbaik untuk Bakmi Goreng, Bakmi Kuah, Bakso & Ramen Sehat</span>
-                <span className="font-black text-[#A3D99B]">KAPASITAS SUPLAI 1.5 - 2.5 TON PER SIKLUS</span>
+                <span className="font-black text-[#A3D99B]">KAPASITAS SUPLAI 0.5 - 2 TON PER SIKLUS</span>
               </div>
             </div>
           )}
@@ -689,11 +689,11 @@ export default function VideotronPresentation({ onClose }) {
                 {/* Header Title */}
                 <div className="flex items-end justify-between border-b border-white/10 pb-3">
                   <div>
-                    <h2 className="text-[42px] font-black text-white leading-tight font-display">
-                      Bukti Fisik Sertifikasi <span className="text-[#A3D99B]">Halal, NIB & HAKI Merek</span>
+                    <h2 className="text-[40px] font-black text-white leading-tight font-display">
+                      Bukti Sertifikasi, Legalitas & <span className="text-[#A3D99B]">Piagam Penghargaan</span>
                     </h2>
-                    <p className="text-[19px] text-[#D0E2CE] mt-1">
-                      Dokumen legal resmi dari Kementerian Agama RI (BPJPH), BKPM RI (NIB), dan Kemenkumham RI (HAKI).
+                    <p className="text-[18px] text-[#D0E2CE] mt-1">
+                      Dokumen resmi BPJPH (Halal), BKPM (NIB), Kemenkumham (HAKI) serta Piagam Rekor MURI & Penghargaan DIY.
                     </p>
                   </div>
                   <div>
@@ -703,11 +703,11 @@ export default function VideotronPresentation({ onClose }) {
                   </div>
                 </div>
 
-                {/* 3 Certificate Columns Grid */}
-                <div className="grid grid-cols-3 gap-7 h-[620px]">
+                {/* 5 Certificate & Award Columns Grid */}
+                <div className="grid grid-cols-5 gap-4 h-[620px]">
                   {/* 1. Halal Certificate */}
-                  <div className="bg-[#133324] border-[2.5px] border-[#2B684C] rounded-[26px] p-4.5 flex flex-col justify-between shadow-2xl">
-                    <div className="h-[430px] bg-white rounded-[18px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
+                  <div className="bg-[#133324] border-[2px] border-[#2B684C] rounded-[22px] p-3 flex flex-col justify-between shadow-2xl">
+                    <div className="h-[390px] bg-white rounded-[14px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
                       <img 
                         src={getAssetUrl("images/cert_halal.png")} 
                         alt="Sertifikat Halal Resmi" 
@@ -715,62 +715,108 @@ export default function VideotronPresentation({ onClose }) {
                       />
                       <div className="absolute left-[6.5%] right-[6.5%] top-[56.6%] h-[4.6%] backdrop-blur-md bg-white/70 pointer-events-none" />
                     </div>
-                    <div className="flex flex-col gap-1.5 pt-3">
-                      <div className="text-xl font-black text-white flex items-center justify-between">
-                        <span>Sertifikat Halal Resmi</span>
-                        <span className="text-xs font-black text-[#A3D99B] bg-[#0A1F16] px-2.5 py-0.5 rounded">BPJPH</span>
+                    <div className="flex flex-col gap-1 pt-2.5">
+                      <div className="text-[16px] font-black text-white flex items-center justify-between">
+                        <span>Sertifikat Halal</span>
+                        <span className="text-[10px] font-black text-[#A3D99B] bg-[#0A1F16] px-2 py-0.5 rounded">BPJPH</span>
                       </div>
-                      <div className="text-base font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1.5 px-3 rounded-lg text-center">
+                      <div className="text-[13px] font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1 px-2 rounded-lg text-center truncate">
                         ID34110000559820922
                       </div>
-                      <div className="text-sm font-bold text-[#D0E2CE] text-center">
-                        Kemenag RI • Berlaku s.d. 10 Nov 2026
+                      <div className="text-[12px] font-bold text-[#D0E2CE] text-center truncate">
+                        Kemenag RI • s.d. 2026
                       </div>
                     </div>
                   </div>
 
                   {/* 2. NIB Certificate */}
-                  <div className="bg-[#133324] border-[2.5px] border-[#2B684C] rounded-[26px] p-4.5 flex flex-col justify-between shadow-2xl">
-                    <div className="h-[430px] bg-white rounded-[18px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
+                  <div className="bg-[#133324] border-[2px] border-[#2B684C] rounded-[22px] p-3 flex flex-col justify-between shadow-2xl">
+                    <div className="h-[390px] bg-white rounded-[14px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
                       <img 
                         src={getAssetUrl("images/cert_nib.png")} 
                         alt="Nomor Induk Berusaha" 
                         className="w-full h-full object-contain object-top p-1"
                       />
                     </div>
-                    <div className="flex flex-col gap-1.5 pt-3">
-                      <div className="text-xl font-black text-white flex items-center justify-between">
-                        <span>Nomor Induk Berusaha (NIB)</span>
-                        <span className="text-xs font-black text-[#A3D99B] bg-[#0A1F16] px-2.5 py-0.5 rounded">BKPM RI</span>
+                    <div className="flex flex-col gap-1 pt-2.5">
+                      <div className="text-[16px] font-black text-white flex items-center justify-between">
+                        <span>NIB Berusaha</span>
+                        <span className="text-[10px] font-black text-[#A3D99B] bg-[#0A1F16] px-2 py-0.5 rounded">BKPM RI</span>
                       </div>
-                      <div className="text-base font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1.5 px-3 rounded-lg text-center">
+                      <div className="text-[13px] font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1 px-2 rounded-lg text-center truncate">
                         1205000111318
                       </div>
-                      <div className="text-sm font-bold text-[#D0E2CE] text-center">
-                        Kementerian Investasi • Berlaku Seumur Hidup
+                      <div className="text-[12px] font-bold text-[#D0E2CE] text-center truncate">
+                        BKPM • Seumur Hidup
                       </div>
                     </div>
                   </div>
 
                   {/* 3. HAKI Certificate */}
-                  <div className="bg-[#133324] border-[2.5px] border-[#2B684C] rounded-[26px] p-4.5 flex flex-col justify-between shadow-2xl">
-                    <div className="h-[430px] bg-white rounded-[18px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
+                  <div className="bg-[#133324] border-[2px] border-[#2B684C] rounded-[22px] p-3 flex flex-col justify-between shadow-2xl">
+                    <div className="h-[390px] bg-white rounded-[14px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
                       <img 
                         src={getAssetUrl("images/cert_haki.png")} 
                         alt="Sertifikat Merek HAKI" 
                         className="w-full h-full object-contain object-top p-1"
                       />
                     </div>
-                    <div className="flex flex-col gap-1.5 pt-3">
-                      <div className="text-xl font-black text-white flex items-center justify-between">
-                        <span>Sertifikat Merek (HAKI)</span>
-                        <span className="text-xs font-black text-[#A3D99B] bg-[#0A1F16] px-2.5 py-0.5 rounded">Kemenkumham</span>
+                    <div className="flex flex-col gap-1 pt-2.5">
+                      <div className="text-[16px] font-black text-white flex items-center justify-between">
+                        <span>Sertifikat Merek</span>
+                        <span className="text-[10px] font-black text-[#A3D99B] bg-[#0A1F16] px-2 py-0.5 rounded">HAKI</span>
                       </div>
-                      <div className="text-base font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1.5 px-3 rounded-lg text-center">
+                      <div className="text-[13px] font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1 px-2 rounded-lg text-center truncate">
                         IDM000835742
                       </div>
-                      <div className="text-sm font-bold text-[#D0E2CE] text-center">
-                        DJKI Kemenkumham RI • Hak Eksklusif Merek Dokar
+                      <div className="text-[12px] font-bold text-[#D0E2CE] text-center truncate">
+                        DJKI Kemenkumham RI
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 4. Rekor MURI Award */}
+                  <div className="bg-[#133324] border-[2px] border-[#2B684C] rounded-[22px] p-3 flex flex-col justify-between shadow-2xl">
+                    <div className="h-[390px] bg-white rounded-[14px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
+                      <img 
+                        src={getAssetUrl("images/piagam_rekor_muri.jpg")} 
+                        alt="Piagam Rekor MURI" 
+                        className="w-full h-full object-contain object-top p-1"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1 pt-2.5">
+                      <div className="text-[16px] font-black text-white flex items-center justify-between">
+                        <span>Rekor MURI</span>
+                        <span className="text-[10px] font-black text-[#F3B23E] bg-[#2E2005] px-2 py-0.5 rounded">MURI</span>
+                      </div>
+                      <div className="text-[13px] font-mono font-black text-[#F3B23E] bg-[#091F15] border border-[#1E4A35] py-1 px-2 rounded-lg text-center truncate">
+                        Rekor MURI 2024
+                      </div>
+                      <div className="text-[12px] font-bold text-[#D0E2CE] text-center truncate">
+                        Diskop & UKM DIY • Maret 2024
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 5. JITV Award */}
+                  <div className="bg-[#133324] border-[2px] border-[#2B684C] rounded-[22px] p-3 flex flex-col justify-between shadow-2xl">
+                    <div className="h-[390px] bg-white rounded-[14px] overflow-hidden relative flex items-center justify-center shadow-md border-2 border-[#D5E5D1]">
+                      <img 
+                        src={getAssetUrl("images/piagam_penghargaan_jitv.jpg")} 
+                        alt="Piagam Penghargaan JITV" 
+                        className="w-full h-full object-contain object-top p-1"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1 pt-2.5">
+                      <div className="text-[16px] font-black text-white flex items-center justify-between">
+                        <span>Piagam JITV</span>
+                        <span className="text-[10px] font-black text-[#A3D99B] bg-[#0A1F16] px-2 py-0.5 rounded">Diskominfo</span>
+                      </div>
+                      <div className="text-[13px] font-mono font-black text-[#A3D99B] bg-[#091F15] border border-[#1E4A35] py-1 px-2 rounded-lg text-center truncate">
+                        No. 400.14.3/4119
+                      </div>
+                      <div className="text-[12px] font-bold text-[#D0E2CE] text-center truncate">
+                        Diskominfo DIY • Cinema Kota
                       </div>
                     </div>
                   </div>
@@ -778,8 +824,8 @@ export default function VideotronPresentation({ onClose }) {
               </div>
 
               <div className="flex items-center justify-between h-[50px] border-t border-white/10 text-lg text-white/60">
-                <span>🔬 Teruji Laboratorium Pangan UGM & Kualitas Air Teruji Puskesmas Berkala</span>
-                <span className="font-black text-[#A3D99B]">100% AMAN, HIGIENIS & RESMI TERDAFTAR</span>
+                <span>🔬 Teruji Lab Pangan UGM • Partisipan Rekor MURI • Kontributor JITV Diskominfo DIY</span>
+                <span className="font-black text-[#A3D99B]">100% AMAN, HIGIENIS & RESMI TERVERIFIKASI</span>
               </div>
             </div>
           )}

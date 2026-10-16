@@ -36,7 +36,7 @@ export const BRAND_INFO = {
     { label: "Bebas Gluten", value: "100%", sub: "Ramah Maag, GERD & Alergi" },
     { label: "Kandungan Serat", value: "16x Lipat", sub: "Lebih Tinggi Dibanding Terigu" },
     { label: "Porsi per 5Kg", value: "± 100 Porsi", sub: "Sangat Hemat untuk Bisnis Kuliner" },
-    { label: "Kapasitas Suplai", value: "1.5 - 2.5 Ton", sub: "Per Siklus Produksi Siap Kirim" }
+    { label: "Kapasitas Suplai", value: "0.5 - 2 Ton", sub: "Per Siklus Produksi Siap Kirim" }
   ]
 };
 
@@ -91,12 +91,12 @@ export const PRODUCTS = [
     weight: "5.0 Kg / Bal",
     yieldPortion: "± 100 Porsi Standar Warung",
     costPerPortion: "Sangat Hemat & Bernilai Tinggi",
-    capacity: "1.5 - 2.0 Ton (Dapat ditingkatkan hingga 2.5 Ton per siklus)",
+    capacity: "0.5 - 2.0 Ton (Per siklus produksi siap kirim)",
     target: "Catering, Warung Makan, Warung Bakmi Jawa, Resto, dan Kemitraan HOREKA",
     desc: "Varian kemasan bal losspack 5 Kg isi untaian mie singkong padat kering. Sangat ekonomis dan menguntungkan dengan daya mekar prima menghasilkan hingga 100 porsi matang lezat.",
     features: [
       "1 kemasan 5Kg menghasilkan ± 100 porsi makan standar warung bakmi",
-      "Kapasitas suplai pabrik 1.5 - 2.5 ton sekali produksi, siap memenuhi permintaan pasar",
+      "Kapasitas suplai pabrik 0.5 - 2 ton sekali produksi, siap memenuhi permintaan pasar",
       "Tekstur kenyal alami, tidak mudah lodoh/hancur saat dimasak wajan panas",
       "Tersedia penawaran harga khusus kemitraan dan pembelian grosir"
     ],
@@ -203,8 +203,8 @@ export const CORE_ADVANTAGES = [
   },
   {
     title: "Kapasitas Produksi Besar & Fleksibel",
-    desc: "Kapasitas produksi mencapai 1.5 - 2.0 ton per siklus (dapat ditingkatkan hingga 2.5 ton) untuk menjamin stabilitas pasokan bagi mitra distributor & resto.",
-    tag: "1.5 - 2.5 Ton / Siklus",
+    desc: "Kapasitas produksi mencapai 0.5 - 2 ton per siklus untuk menjamin stabilitas pasokan bagi mitra distributor & resto.",
+    tag: "0.5 - 2 Ton / Siklus",
     icon: "Boxes"
   }
 ];
@@ -349,3 +349,33 @@ export const CERTIFICATES = [
     desc: "Perlindungan hak eksklusif merek dagang resmi Mie Reshik DOKAR di seluruh wilayah Indonesia."
   }
 ];
+
+export const AWARDS = [
+  {
+    id: "muri",
+    title: "Piagam Partisipan Rekor MURI",
+    subtitle: "Pencapaian Rekor MURI Gunungan KUMKM Terbanyak",
+    number: "Rekor MURI - DIY 2024",
+    issuer: "Museum Rekor-Dunia Indonesia & Diskop UKM DIY",
+    date: "Maret 2024",
+    holder: "FX Subena / Prayogakastu (Mie Reshik Cap Dokar)",
+    image: getAssetUrl("images/piagam_rekor_muri.jpg"),
+    badge: "Rekor MURI",
+    desc: "Partisipasi pencapaian rekor dunia Gunungan Tertinggi dari Rangkaian Jenis Oleh-Oleh & Gunungan KUMKM Terbanyak pada Festival Teras Malioboro Ke-2 DIY.",
+    signatory: "Ir. Srie Nurkyatsiwi, MMA (Kepala Dinas Koperasi dan UKM DIY)"
+  },
+  {
+    id: "jitv",
+    title: "Piagam Penghargaan Kontributor JITV",
+    subtitle: "Program Cinema Kota-Kota Jogja Istimewa TV",
+    number: "No. 400.14.3/4119",
+    issuer: "Dinas Komunikasi dan Informatika DIY (Tim Pengawas JITV)",
+    date: "23 April 2024",
+    holder: "Mie Reshik Cap Dokar",
+    image: getAssetUrl("images/piagam_penghargaan_jitv.jpg"),
+    badge: "Diskominfo DIY",
+    desc: "Penghargaan atas partisipasi aktif sebagai kontributor dalam program penayangan Cinema Kota-Kota di Jogja Istimewa Televisi (JITV).",
+    signatory: "Agung Widhiono, S.T. (Kabid Layanan Teknologi Informatika Diskominfo DIY)"
+  }
+];
+

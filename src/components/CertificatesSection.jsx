@@ -7,7 +7,7 @@ import {
   X, 
   CheckCircle2
 } from 'lucide-react';
-import { CERTIFICATES } from '../data/productKnowledgeData';
+import { CERTIFICATES, AWARDS } from '../data/productKnowledgeData';
 
 export default function CertificatesSection() {
   const [activeModalCert, setActiveModalCert] = useState(null);
@@ -88,6 +88,72 @@ export default function CertificatesSection() {
           ))}
         </div>
 
+        {/* Awards & Recognition Section (Di Bawah 3 Sertifikat) */}
+        <div className="mt-14 pt-10 border-t border-[#EADBCC]">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <div className="badge-pill bg-[#FEF7E6] text-[#B37D0B] border border-[#F3B23E]/50 mb-2">
+              <Award className="w-3.5 h-3.5 text-[#B37D0B]" />
+              <span>Piagam Penghargaan & Prestasi</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1E3F33] font-display">
+              Apresiasi Resmi & Pencapaian Rekor MURI
+            </h3>
+            <p className="text-xs sm:text-sm text-[#4F6359] mt-1.5">
+              Bukti apresiasi resmi dari Pemerintah Daerah DIY dan pencapaian rekor Museum Rekor-Dunia Indonesia (MURI).
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {AWARDS.map((award) => (
+              <div 
+                key={award.id}
+                className="card-soft p-5 sm:p-6 bg-white border border-[#EADBCC] shadow-sm flex flex-col justify-between group hover:border-[#F3B23E] hover:shadow-xl transition-all duration-300"
+              >
+                <div>
+                  <div 
+                    onClick={() => setActiveModalCert(award)}
+                    className="relative rounded-2xl overflow-hidden bg-[#FAF7F2] border border-[#ECE2D2] cursor-pointer mb-5 h-80 flex items-center justify-center p-2"
+                  >
+                    <img
+                      src={award.image}
+                      alt={award.title}
+                      className="max-h-full max-w-full object-contain shadow-2xs transition-transform duration-300 group-hover:scale-102"
+                    />
+                    <div className="absolute inset-0 bg-stone-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="btn-curved bg-white text-[#1E3F33] px-4 py-2 text-xs font-bold shadow-md flex items-center gap-1.5">
+                        <ZoomIn className="w-4 h-4" />
+                        <span>Lihat Dokumen</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="badge-pill bg-[#FEF7E6] text-[#B37D0B] border border-[#F3B23E]/40 text-[10px] font-extrabold">
+                      {award.badge}
+                    </span>
+                    <span className="text-[10px] font-mono text-[#5C7368] font-bold">
+                      {award.number}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base font-bold text-[#1E3F33] font-display mb-1.5 leading-snug">
+                    {award.title}
+                  </h3>
+
+                  <p className="text-xs text-[#5C7368] leading-relaxed mb-3">
+                    {award.desc}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-[#F0E8DC] text-[11px] text-[#B37D0B] font-bold flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B37D0B]" />
+                  <span>Diberikan: {award.date} • {award.issuer}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Certificate Modal View */}
         {activeModalCert && (
           <div 
@@ -108,13 +174,13 @@ export default function CertificatesSection() {
               <div className="overflow-y-auto p-6 sm:p-8 custom-scrollbar">
                 <div className="mb-4 pr-10">
                   <span className="badge-pill bg-[#EBF7E9] text-[#1E3F33] text-xs font-bold mb-2">
-                    No: {activeModalCert.number}
+                    {activeModalCert.number}
                   </span>
                   <h3 className="text-xl font-extrabold text-[#1E3F33]">
                     {activeModalCert.title}
                   </h3>
                   <p className="text-xs text-[#5C7368] mt-1">
-                    Penerbit: {activeModalCert.issuer} • Masa Berlaku: {activeModalCert.validUntil}
+                    Penerbit: {activeModalCert.issuer} {activeModalCert.validUntil ? `• Masa Berlaku: ${activeModalCert.validUntil}` : `• Tanggal: ${activeModalCert.date}`}
                   </p>
                 </div>
 
