@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lembar Cetak A4 Stiker Kotak Mie Dokar (6x)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      background: #FFFFFF;
+      margin: 0;
+      padding: 15mm 18mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sheet-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #C4DFC1;
+      padding-bottom: 3mm;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8pt;
+      color: #145937;
+      font-weight: 700;
+    }
+    .stickers-grid {
+      width: 174mm;
+      height: 255mm;
+      display: grid;
+      grid-template-columns: 80mm 80mm;
+      grid-template-rows: 80mm 80mm 80mm;
+      column-gap: 14mm;
+      row-gap: 7.5mm;
+      justify-content: center;
+      align-content: center;
+    }
+    .sticker-unit {
+      width: 80mm;
+      height: 80mm;
+      position: relative;
+    }
+    .sticker-unit img {
+      width: 80mm;
+      height: 80mm;
+      display: block;
+      object-fit: cover;
+    }
+    .sheet-footer {
+      width: 100%;
+      text-align: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 7.5pt;
+      color: #666666;
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet-header">
+    <span>MIE RESHIK CAP DOKAR — LEMBAR CETAK STIKER KOTAK (80 × 80 mm)</span>
+    <span>UKURAN KERTAS: A4 (6 STIKER / LEMBAR)</span>
+  </div>
+
+  <div class="stickers-grid">
+    <div class="sticker-unit"><img src="file:///Users/skyjad/Documents/memoria/dokar-product-knowledge/public/stiker_kotak_mie_dokar.png"></div>
+    <div class="sticker-unit"><img src="file:///Users/skyjad/Documents/memoria/dokar-product-knowledge/public/stiker_kotak_mie_dokar.png"></div>
+    <div class="sticker-unit"><img src="file:///Users/skyjad/Documents/memoria/dokar-product-knowledge/public/stiker_kotak_mie_dokar.png"></div>
+    <div class="sticker-unit"><img src="file:///Users/skyjad/Documents/memoria/dokar-product-knowledge/public/stiker_kotak_mie_dokar.png"></div>
+    <div class="sticker-unit"><img src="file:///Users/skyjad/Documents/memoria/dokar-product-knowledge/public/stiker_kotak_mie_dokar.png"></div>
+    <div class="sticker-unit"><img src="file:///Users/skyjad/Documents/memoria/dokar-product-knowledge/public/stiker_kotak_mie_dokar.png"></div>
+  </div>
+
+  <div class="sheet-footer">
+    Siap cetak pada kertas stiker HVS / Chromo / Vinyl A4 • Gunting / potong mengikuti garis tepi stiker
+  </div>
+</body>
+</html>
